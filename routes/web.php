@@ -13,7 +13,7 @@
 
 Route::group(['prefix' => 'admin'], function() {
 
-    Route::get('/', ['as' => 'admin.index','uses' => 'VRDashboardController@adminIndex']);
+    Route::get('/', ['as' => 'admin.index','uses' => 'DashBoardController@adminIndex']);
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', ['as' => 'admin.categories.index','uses' => 'VRCategoriesController@adminIndex']);
