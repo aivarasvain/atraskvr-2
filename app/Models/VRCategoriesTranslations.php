@@ -20,4 +20,11 @@ class VRCategoriesTranslations extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'category_id', 'language_id', 'name', 'slug'];
+
+    /**
+     * Fields which won't be displayed
+     * @var array
+     */
+    protected $hidden = ['id', 'count', 'created_at', 'updated_at', 'deleted_at'];
+
 }

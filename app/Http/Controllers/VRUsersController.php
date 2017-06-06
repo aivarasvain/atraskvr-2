@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VRCategories;
-use App\Models\VRCategoriesTranslations;
+use App\Models\VRUsers;
 use Illuminate\Http\Request;
 
-class VRCategoriesController extends Controller
+class VRUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class VRCategoriesController extends Controller
      */
     public function adminIndex()
     {
-        $configuration['list'] = VRCategoriesTranslations::get()->toArray();
+        $configuration['list'] = VRUsers::get()->toArray();
 
         return view('admin.list', $configuration);
     }

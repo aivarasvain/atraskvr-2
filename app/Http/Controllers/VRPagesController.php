@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRPagesTranslations;
 use Illuminate\Http\Request;
 
 class VRPagesController extends Controller
@@ -11,9 +12,11 @@ class VRPagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function adminIndex()
     {
-        //
+        $configuration['list'] = VRPagesTranslations::with('parentpage')->get()->toArray();
+
+        return view('admin.list', $configuration);
     }
 
     /**

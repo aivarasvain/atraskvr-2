@@ -15,7 +15,7 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/', function() {
        return view('admin.home');
-    });
+    })->name('admin.home');
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', ['as' => 'admin.categories.index','uses' => 'VRCategoriesController@adminIndex']);
@@ -30,14 +30,14 @@ Route::group(['prefix' => 'admin'], function() {
     });
 
     Route::group(['prefix' => 'pages'], function () {
-        Route::get('/', ['as' => 'admin.pages.index','uses' => 'VRCategoriesController@adminIndex']);
-        Route::get('/create', ['as' => 'admin.pages.create','uses' => 'VRCategoriesController@adminCreate']);
-        Route::post('/create', ['as' => 'admin.pages.store', 'uses' => 'VRCategoriesController@adminStore']);
+        Route::get('/', ['as' => 'admin.pages.index','uses' => 'VRPagesController@adminIndex']);
+        Route::get('/create', ['as' => 'admin.pages.create','uses' => 'VRPagesController@adminCreate']);
+        Route::post('/create', ['as' => 'admin.pages.store', 'uses' => 'VRPagesController@adminStore']);
         Route::group(['prefix' => '{id}'], function () {
-            Route::get('/edit', ['as' => 'admin.pages.edit', 'uses' => 'VRCategoriesController@adminEdit']);
-            Route::post('/edit', ['as' => 'admin.pages.update', 'uses' => 'VRCategoriesController@adminUpdate']);
-            Route::get('/', ['as' => 'admin.pages.show', 'uses' => 'VRCategoriesController@adminShow']);
-            Route::delete('/', ['as' => 'admin.pages.delete', 'uses' => 'VRCategoriesController@adminDestroy']);
+            Route::get('/edit', ['as' => 'admin.pages.edit', 'uses' => 'VRPagesController@adminEdit']);
+            Route::post('/edit', ['as' => 'admin.pages.update', 'uses' => 'VRPagesController@adminUpdate']);
+            Route::get('/', ['as' => 'admin.pages.show', 'uses' => 'VRPagesController@adminShow']);
+            Route::delete('/', ['as' => 'admin.pages.delete', 'uses' => 'VRPagesController@adminDestroy']);
         });
     });
 
@@ -51,6 +51,30 @@ Route::group(['prefix' => 'admin'], function() {
             Route::post('/edit', ['as' => 'admin.languages.update', 'uses' => 'VRLanguagesController@adminUpdate']);
             Route::get('/', ['as' => 'admin.languages.show', 'uses' => 'VRLanguagesController@adminShow']);
             Route::delete('/', ['as' => 'admin.languages.delete', 'uses' => 'VRLanguagesController@adminDestroy']);
+        });
+    });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', ['as' => 'admin.users.index','uses' => 'VRUsersController@adminIndex']);
+        Route::get('/create', ['as' => 'admin.users.create','uses' => 'VRUsersController@adminCreate']);
+        Route::post('/create', ['as' => 'admin.users.store', 'uses' => 'VRUsersController@adminStore']);
+        Route::group(['prefix' => '{id}'], function () {
+            Route::get('/edit', ['as' => 'admin.users.edit', 'uses' => 'VRUsersController@adminEdit']);
+            Route::post('/edit', ['as' => 'admin.users.update', 'uses' => 'VRUsersController@adminUpdate']);
+            Route::get('/', ['as' => 'admin.users.show', 'uses' => 'VRUsersController@adminShow']);
+            Route::delete('/', ['as' => 'admin.users.delete', 'uses' => 'VRUsersController@adminDestroy']);
+        });
+    });
+
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', ['as' => 'admin.orders.index','uses' => 'VROrdersController@adminIndex']);
+        Route::get('/create', ['as' => 'admin.orders.create','uses' => 'VROrdersController@adminCreate']);
+        Route::post('/create', ['as' => 'admin.orders.store', 'uses' => 'VROrdersController@adminStore']);
+        Route::group(['prefix' => '{id}'], function () {
+            Route::get('/edit', ['as' => 'admin.orders.edit', 'uses' => 'VROrdersController@adminEdit']);
+            Route::post('/edit', ['as' => 'admin.orders.update', 'uses' => 'VROrdersController@adminUpdate']);
+            Route::get('/', ['as' => 'admin.orders.show', 'uses' => 'VROrdersController@adminShow']);
+            Route::delete('/', ['as' => 'admin.orders.delete', 'uses' => 'VROrdersController@adminDestroy']);
         });
     });
     

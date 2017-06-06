@@ -20,4 +20,10 @@ class VRLanguages extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'language_code', 'name'];
+
+    /**
+     * Fields which won't be displayed
+     * @var array
+     */
+    protected $hidden = ['id', 'count', 'updated_at', 'deleted_at'];
 }

@@ -13,8 +13,8 @@ class LanguagesSeeder extends Seeder
     public function run()
     {
         $list = [
-            ["id" => "lt", "name" => "Lithuanian"],
-            ["id" => "en", "name" => "English"]
+            ["id" => "lt", "name" => "Lithuanian", "language_code" => "lt"],
+            ["id" => "en", "name" => "English", "language_code" => "en"]
         ];
         DB::beginTransaction();
         try {

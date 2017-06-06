@@ -20,4 +20,5 @@ class VRCategories extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'parent_id'];
+
 }

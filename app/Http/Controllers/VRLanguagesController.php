@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRLanguages;
 use Illuminate\Http\Request;
 
 class VRLanguagesController extends Controller
@@ -11,9 +12,11 @@ class VRLanguagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function adminIndex()
     {
-        //
+        $configuration['list'] = VRLanguages::get()->toArray();
+
+        return view('admin.list', $configuration);
     }
 
     /**

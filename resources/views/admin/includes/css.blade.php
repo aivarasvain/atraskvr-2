@@ -9,6 +9,8 @@
 <!-- Skin -->
 <link rel="stylesheet" href="{{asset('dist/css/skins/skin-red.min.css')}}">
 
+<link rel="stylesheet" href="{{asset('css/admin.css')}}">
+
 
 
 
