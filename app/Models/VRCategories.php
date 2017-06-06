@@ -19,5 +19,5 @@ class VRCategories extends CoreModel
      * Table fields which will be manipulated
      * @var array
      */
-    protected $fillable = ['id'];
+    protected $fillable = ['id', 'parent_id'];
 }

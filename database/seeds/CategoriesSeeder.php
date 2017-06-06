@@ -13,11 +13,12 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         $list = [
-            ["id" => "apie"],
-            ["id" => "kambariai"],
-            ["id" => "vieta"],
-            ["id" => "bilietai"],
-            ["id" => "remejai"],
+            ["id" => "menu", "parent_id" => ""],
+            ["id" => "apie", "parent_id" => "menu"],
+            ["id" => "kambariai", "parent_id" => "menu"],
+            ["id" => "vieta", "parent_id" => "menu"],
+            ["id" => "bilietai", "parent_id" => "menu"],
+            ["id" => "remejai", "parent_id" => "menu"],
         ];
 
         DB::beginTransaction();
