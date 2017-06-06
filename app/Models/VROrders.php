@@ -20,4 +20,10 @@ class VROrders extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'status', 'user_id'];
+
+    /**
+     * Fields which won't be displayed
+     * @var array
+     */
+    protected $hidden = ['id', 'count', 'created_at', 'updated_at', 'deleted_at'];
 }
