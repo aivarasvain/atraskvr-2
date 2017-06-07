@@ -25,7 +25,7 @@ class VRLanguages extends CoreModel
      * Fields which won't be displayed
      * @var array
      */
-    protected $hidden = ['id', 'count', 'updated_at', 'deleted_at'];
+    protected $hidden = ['count', 'updated_at', 'deleted_at'];
 
     /**
      * Get fillables array and unsets first value

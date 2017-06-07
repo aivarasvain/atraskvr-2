@@ -47,6 +47,9 @@
                                                 <th>Video</th>
                                                 <th>Google map</th>
 
+                                            @elseif($key == 'id')
+                                                {{--Dont show id--}}
+
                                             @else
                                                 <th>{{ucfirst(str_replace('_', ' ', $key))}}</th>
                                             @endif
@@ -74,15 +77,35 @@
                                 @foreach($list as $item)
                                 <tr>
 
+
+
                                     @foreach($item as $key => $record)
+
+
 
                                         @if($key == 'description_long' || $key == 'description_short')
 
                                         @elseif($key == 'parentpage')
 
-                                            <td>{{$record['image_id']}}</td>
+
+                                            @foreach($resources as $id => $path)
+
+                                               @if($id == $record['image_id'])
+
+                                                    <td><img id="imgInAdmin" src="{{asset($path)}}" alt=""></td>
+
+
+                                               @endif
+
+
+                                            @endforeach
+
+
                                             <td>{{$record['video_url']}}</td>
                                             <td>{{$record['google_map']}}</td>
+
+                                        @elseif($key == 'id')
+                                            {{--Dont show id data--}}
 
                                         @else
 
@@ -93,14 +116,16 @@
 
 
                                     @endforeach
-                                        <td><a class="btn btn-info btn-sm" href=""><i class="fa fa-eye"></i> View</a></td>
-                                        <td><a class="btn bg-purple btn-sm" href=""><i class="fa fa-pencil"></i> Edit</a></td>
+                                        <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
+                                        <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
                                         <td><a class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
                                 </tr>
 
 
 
                                 @endforeach
+
+
 
 
                             </table>

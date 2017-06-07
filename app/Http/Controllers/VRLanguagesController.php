@@ -63,9 +63,14 @@ class VRLanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function adminShow($id)
     {
-        //
+        $dataFromModel = new VRLanguages();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+
+        $configuration['record'] = VRLanguages::find($id)->toArray();
+
+        return view('admin.single', $configuration);
     }
 
     /**
@@ -74,9 +79,15 @@ class VRLanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function adminEdit($id)
     {
-        //
+        $dataFromModel = new VRLanguages();
+        $configuration['record'] = VRLanguages::find($id);
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['fields'] = $dataFromModel->getFillables();
+
+
+        return view('admin.edit', $configuration);
     }
 
     /**
@@ -86,9 +97,11 @@ class VRLanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function adminUpdate(Request $request, $id)
     {
-        //
+        $record = VRLanguages::find($id);
+        $data = request()->all();
+        $record->update($data);
     }
 
     /**

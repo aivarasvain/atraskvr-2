@@ -6,6 +6,8 @@ namespace App\Models;
 class VRPagesResourcesConnections extends CoreModel
 {
 
+    public $timestamps = false;
+
     /**
      * Table name in database
      * @var string

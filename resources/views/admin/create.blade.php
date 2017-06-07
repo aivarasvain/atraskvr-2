@@ -19,7 +19,7 @@
 
         <div id="createForm" class="box-body">
 
-            <form action="{{route('admin.' . $tableName . '.store')}}" method="POST" role="form">
+            <form action="{{route('admin.' . $tableName . '.store')}}" method="POST" role="form" enctype="multipart/form-data">
 
                 @foreach($fields as $key => $field)
 
@@ -41,7 +41,7 @@
 
                         </div>
 
-                    @elseif($field == 'parent_id')
+                    @elseif($field == 'parent_id' || $field == 'category_id')
 
                         <div class="form-group">
                             <label>Select {{str_replace('_id', '', $field)}}</label>
@@ -58,6 +58,23 @@
                             </select>
 
                         </div>
+
+                    @elseif($field == 'description_short' || $field == 'description_long')
+
+                        <div class="form-group">
+                            <label>{{str_replace('_id', '', $field)}}</label>
+                            <textarea name="{{$field}}" class="form-control" rows="3"></textarea>
+                        </div>
+
+                    @elseif($field == 'image_id')
+
+                        {{--<div class="form-group">--}}
+                            {{--<label for="exampleInputFile">Upload image</label>--}}
+                            {{--<input name="image" type="file" id="exampleInputFile">--}}
+
+                            {{--<p class="help-block">Upload any image you want</p>--}}
+                        {{--</div>--}}
+                        <input name="image" type="file">
 
 
                     @else

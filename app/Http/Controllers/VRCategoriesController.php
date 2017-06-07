@@ -47,8 +47,6 @@ class VRCategoriesController extends Controller
         /** -------------------- */
 
 
-
-
         $configuration['tableName'] = $dataFromModel->getTableName();
         $configuration['fields'] = $fields;
         $configuration['languages'] = VRLanguages::get()->toArray();
@@ -89,9 +87,14 @@ class VRCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function adminShow($id)
     {
-        //
+        $dataFromModel = new VRCategories();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+
+        $configuration['record'] = VRCategoriesTranslations::find($id)->toArray();
+
+        return view('admin.single', $configuration);
     }
 
     /**
@@ -100,9 +103,26 @@ class VRCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function adminEdit($id)
     {
-        //
+        $dataFromModel = new VRCategories();
+        $dataFromModel2 = new VRCategoriesTranslations();
+
+        $categoriesFillables = $dataFromModel->getFillables();
+        $categoriesTranslationsFillables = $dataFromModel2->getFillables();
+
+        $fields = array_merge($categoriesFillables, $categoriesTranslationsFillables);
+
+
+        $configuration['fields'] = $fields;
+        $configuration['categories'] = VRCategories::get()->toArray();
+        $configuration['record'] = VRCategoriesTranslations::find($id)->toArray();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['languages'] = VRLanguages::get()->toArray();
+
+
+
+        return view('admin.edit', $configuration);
     }
 
     /**
@@ -114,7 +134,9 @@ class VRCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $record = DTPizzas::find($id);
+//        $data = request()->all();
+//        $record->update($data);
     }
 
     /**

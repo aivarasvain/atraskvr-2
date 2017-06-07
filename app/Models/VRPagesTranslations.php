@@ -26,7 +26,7 @@ class VRPagesTranslations extends CoreModel
      * Fields which won't be displayed
      * @var array
      */
-    protected $hidden = ['id', 'count', 'created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['count', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * Get fillables array and unsets first two values
