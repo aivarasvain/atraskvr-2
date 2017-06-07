@@ -134,16 +134,19 @@ class VRCategoriesController extends Controller
      */
     public function adminUpdate(Request $request, $id)
     {
-//        $record = VRCategoriesTranslations::find($id);
-//        $record1 = VRCategories::find($id);
-//
-//        return $data = request()->all();
-//        $record->update([
-//
-//
-//
-//        ]);
-//    }
+        $record = VRCategoriesTranslations::find($id);
+        $categoryId = VRCategoriesTranslations::where('id', $id)->select('category_id')->get()->toArray();
+        $record1 = VRCategories::where('id', $categoryId[0]['category_id'])->get();
+
+
+
+
+
+        $data = request()->all();
+        $record1->update([
+            'parent_id' => $data['parent_id'],
+        ]);
+    }
 
     /**
      * Remove the specified resource from storage.
