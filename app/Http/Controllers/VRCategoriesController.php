@@ -116,7 +116,7 @@ class VRCategoriesController extends Controller
 
         $configuration['fields'] = $fields;
         $configuration['categories'] = VRCategories::get()->toArray();
-        $configuration['record'] = VRCategoriesTranslations::find($id)->toArray();
+        $configuration['record'] = VRCategoriesTranslations::where('id', $id)->with('parentcategory')->first()->toArray();
         $configuration['tableName'] = $dataFromModel->getTableName();
         $configuration['languages'] = VRLanguages::get()->toArray();
 
@@ -132,12 +132,18 @@ class VRCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function adminUpdate(Request $request, $id)
     {
-//        $record = DTPizzas::find($id);
-//        $data = request()->all();
-//        $record->update($data);
-    }
+//        $record = VRCategoriesTranslations::find($id);
+//        $record1 = VRCategories::find($id);
+//
+//        return $data = request()->all();
+//        $record->update([
+//
+//
+//
+//        ]);
+//    }
 
     /**
      * Remove the specified resource from storage.

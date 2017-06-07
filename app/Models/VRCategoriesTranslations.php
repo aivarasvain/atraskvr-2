@@ -31,11 +31,19 @@ class VRCategoriesTranslations extends CoreModel
      * Get fillables array and unsets first two values
      * @return array
      */
+
+//    protected $with = ['parentcategory'];
+
     public function getFillables()
     {
         unset($this->fillable[0]);
         unset($this->fillable[1]);
         return $this->fillable;
+    }
+
+    public function parentcategory()
+    {
+        return $this->hasOne(VRCategories::class, 'id', 'category_id');
     }
 
 }

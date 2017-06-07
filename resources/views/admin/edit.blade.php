@@ -4,8 +4,6 @@
 
 
 
-
-
     <div class="container">
 
         <!-- Content Header (Page header) -->
@@ -33,7 +31,7 @@
                                 @foreach($languages as $language)
 
                                     <option value="{{$language['language_code']}}"
-                                            
+
                                         @if($record['language_id'] == $language['id'])
                                             {{'selected'}}
                                         @endif
@@ -55,6 +53,7 @@
                             <select name="{{$field}}" class="form-control">
 
                                 @foreach($categories as $category)
+
 
                                     <option value="{{$category['id']}}">{{$category['id']}}</option>
 
