@@ -14,7 +14,11 @@ class VRLanguagesController extends Controller
      */
     public function adminIndex()
     {
+
+        $dataFromModel = new VRLanguages();
+
         $configuration['list'] = VRLanguages::get()->toArray();
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         return view('admin.list', $configuration);
     }
@@ -24,9 +28,14 @@ class VRLanguagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function adminCreate()
     {
-        //
+        $dataFromModel = new VRLanguages();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['fields'] = $dataFromModel->getFillables();
+
+
+        return view('admin.create', $configuration);
     }
 
     /**
@@ -35,9 +44,17 @@ class VRLanguagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function adminStore(Request $request)
     {
-        //
+        $data = request()->all();
+
+        VRLanguages::create([
+
+            'id'            => $data['language_code'],
+            'language_code' => $data['language_code'],
+            'name'          => $data['name']
+
+        ]);
     }
 
     /**

@@ -21,4 +21,14 @@ class VRCategories extends CoreModel
      */
     protected $fillable = ['id', 'parent_id'];
 
+    /**
+     * Get fillables array and unsets first value
+     * @return array
+     */
+    public function getFillables()
+    {
+        unset($this->fillable[0]);
+        return $this->fillable;
+    }
+
 }

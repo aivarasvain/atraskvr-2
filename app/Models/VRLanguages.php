@@ -26,4 +26,15 @@ class VRLanguages extends CoreModel
      * @var array
      */
     protected $hidden = ['id', 'count', 'updated_at', 'deleted_at'];
+
+    /**
+     * Get fillables array and unsets first value
+     * @return array
+     */
+    public function getFillables()
+    {
+        unset($this->fillable[0]);
+        return $this->fillable;
+    }
+
 }

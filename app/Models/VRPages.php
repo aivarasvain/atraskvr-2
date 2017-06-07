@@ -22,4 +22,16 @@ class VRPages extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'category_id', 'google_map', 'image_id', 'video_url'];
+
+    /**
+     * Get fillables array and unsets first value
+     * @return array
+     */
+    public function getFillables()
+    {
+        unset($this->fillable[0]);
+        return $this->fillable;
+    }
+
+
 }

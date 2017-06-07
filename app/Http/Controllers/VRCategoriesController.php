@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VRCategories;
 use App\Models\VRCategoriesTranslations;
+use App\Models\VRLanguages;
 use Illuminate\Http\Request;
 
 class VRCategoriesController extends Controller
@@ -15,7 +16,10 @@ class VRCategoriesController extends Controller
      */
     public function adminIndex()
     {
+        $dataFromModel = new VRCategories();
+
         $configuration['list'] = VRCategoriesTranslations::get()->toArray();
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         return view('admin.list', $configuration);
     }
@@ -25,9 +29,32 @@ class VRCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function adminCreate()
     {
-        //
+
+        /**
+         * Merges fillables arrays from VRCategories and VRCategoriesTranslations models
+         */
+
+        $dataFromModel = new VRCategories();
+        $dataFromModel2 = new VRCategoriesTranslations();
+
+        $categoriesFillables = $dataFromModel->getFillables();
+        $categoriesTranslationsFillables = $dataFromModel2->getFillables();
+
+        $fields = array_merge($categoriesFillables, $categoriesTranslationsFillables);
+
+        /** -------------------- */
+
+
+
+
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['fields'] = $fields;
+        $configuration['languages'] = VRLanguages::get()->toArray();
+        $configuration['categories'] = VRCategories::get()->toArray();
+
+        return view('admin.create', $configuration);
     }
 
     /**
@@ -36,9 +63,24 @@ class VRCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function adminStore(Request $request)
     {
-        //
+        $data = request()->all();
+
+        $category = VRCategories::create([
+
+            'parent_id' => $data['parent_id']
+
+        ]);
+
+        VRCategoriesTranslations::create([
+
+            'category_id' => $category['id'],
+            'language_id' => $data['language_id'],
+            'name'        => $data['name'],
+            'slug'        => $data['slug']
+
+        ]);
     }
 
     /**

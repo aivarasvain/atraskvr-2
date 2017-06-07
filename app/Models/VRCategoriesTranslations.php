@@ -27,4 +27,15 @@ class VRCategoriesTranslations extends CoreModel
      */
     protected $hidden = ['id', 'count', 'created_at', 'updated_at', 'deleted_at'];
 
+    /**
+     * Get fillables array and unsets first two values
+     * @return array
+     */
+    public function getFillables()
+    {
+        unset($this->fillable[0]);
+        unset($this->fillable[1]);
+        return $this->fillable;
+    }
+
 }

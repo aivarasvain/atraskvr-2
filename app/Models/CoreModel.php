@@ -15,4 +15,16 @@ class CoreModel extends Model
     public $incrementing = false;
     use SoftDeletes;
 
+
+    /**
+     * Gets table name
+     * @return string
+     */
+    public function getTableName()
+    {
+        $tableName = substr($this->table, 3);
+
+        return $tableName;
+    }
+
 }

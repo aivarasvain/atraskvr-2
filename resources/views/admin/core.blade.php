@@ -13,7 +13,6 @@
 
         <div class="wrapper">
             <div class="content-wrapper">
-                @include('admin.includes.contentheader')
                 @yield('content')
             </div>
             @include('admin.includes.footer')

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRCategories;
+use App\Models\VRLanguages;
+use App\Models\VRPages;
 use App\Models\VRPagesTranslations;
 use Illuminate\Http\Request;
 
@@ -14,7 +17,10 @@ class VRPagesController extends Controller
      */
     public function adminIndex()
     {
+        $dataFromModel = new VRPages();
+
         $configuration['list'] = VRPagesTranslations::with('parentpage')->get()->toArray();
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         return view('admin.list', $configuration);
     }
@@ -24,9 +30,32 @@ class VRPagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function adminCreate()
     {
-        //
+
+        /**
+         * Merges fillables arrays from VRCategories and VRCategoriesTranslations models
+         */
+
+        $dataFromModel = new VRPages();
+        $dataFromModel2 = new VRPagesTranslations();
+
+        $categoriesFillables = $dataFromModel->getFillables();
+        $categoriesTranslationsFillables = $dataFromModel2->getFillables();
+
+        $fields = array_merge($categoriesFillables, $categoriesTranslationsFillables);
+
+        /** -------------------- */
+
+
+
+
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['fields'] = $fields;
+        $configuration['languages'] = VRLanguages::get()->toArray();
+        $configuration['categories'] = VRCategories::get()->toArray();
+
+        return view('admin.create', $configuration);
     }
 
     /**
