@@ -20,7 +20,7 @@ class VRUsers extends CoreModel
      * Table fields which will be manipulated
      * @var array
      */
-    protected $fillable = ['id', 'name', 'email', 'password'];
+    protected $fillable = ['id', 'full_name', 'email', 'phone', 'password'];
 
     /**
      * Fields which won't be displayed

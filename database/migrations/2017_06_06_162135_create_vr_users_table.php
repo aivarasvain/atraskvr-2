@@ -18,8 +18,9 @@ class CreateVrUsersTable extends Migration {
 			$table->integer('count', true);
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string('name')->nullable();
+			$table->string('full_name')->nullable();
 			$table->string('email')->nullable();
+			$table->string('phone', 20)->nullable();
 			$table->string('password', 45)->nullable();
 		});
 	}
