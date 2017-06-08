@@ -115,7 +115,7 @@
                             <div class="box-body pad">
 
                                 <textarea id="editor1" name="{{$field}}" rows="10" cols="80">
-                                                This is my textarea to be replaced with CKEditor.
+
                                 </textarea>
 
                             </div>

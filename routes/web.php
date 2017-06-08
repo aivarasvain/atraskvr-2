@@ -81,9 +81,15 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 
-Route::get('/', [
+Route::group(['prefix' => '{language}', 'middleware' => 'check-language'], function () {
 
-    'uses'  => 'FrontEndController@index',
-    'as'    => 'frontend.index'
+    Route::get('/', [
 
-]);
+        'uses'  => 'FrontEndController@index',
+        'as'    => 'frontend.index'
+
+    ]);
+
+});
+
+
