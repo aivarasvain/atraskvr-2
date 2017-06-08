@@ -20,7 +20,7 @@ class CheckLanguage
             app()->setLocale(request()->segment(1));
             return $next($request);
         } else {
-            dd($locales);
+
         }
     }
 }

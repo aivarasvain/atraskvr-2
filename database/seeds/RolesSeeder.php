@@ -14,6 +14,7 @@ class RolesSeeder extends Seeder
     {
         $list = [
             ["name" => "Super Admin", "id" => "super-admin"], // Manage everything
+            ["name" => "Member", "id" => "member"], // Special user access
             ["name" => "User", "id" => "user"], // Average Joe
         ];
         DB::beginTransaction();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VRCategories;
+use App\Models\VRUsers;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -14,6 +15,8 @@ class FrontEndController extends Controller
      */
     public function index()
     {
+
+
 
         $configuration['categories'] = VRCategories::with('translations')->where('parent_id', 'menu')->get()->toArray();
 

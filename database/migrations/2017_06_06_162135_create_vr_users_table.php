@@ -21,7 +21,8 @@ class CreateVrUsersTable extends Migration {
 			$table->string('full_name')->nullable();
 			$table->string('email')->nullable();
 			$table->string('phone', 20)->nullable();
-			$table->string('password', 45)->nullable();
+			$table->string('password')->nullable();
+			$table->string('remember_token', 255)->nullable();
 		});
 	}
 

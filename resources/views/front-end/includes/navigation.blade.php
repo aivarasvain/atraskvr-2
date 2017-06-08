@@ -9,7 +9,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left">
 
                 @foreach($categories as $category)
 
@@ -28,17 +28,11 @@
 
                         <li><a href="#">{{$category['translations']['name']}}</a></li>
 
+
                     @endif
 
 
                 @endforeach
-
-
-
-
-
-
-
 
 
 
@@ -52,6 +46,40 @@
 
 
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                @if(!auth()->user())
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+
+                @else
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{auth()->user()->full_name}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{route('user.index')}}">Orders</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
+                @endif
+
+            </ul>
+
+
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
