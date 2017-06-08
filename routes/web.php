@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin'], function() {
             Route::get('/edit', ['as' => 'admin.languages.edit', 'uses' => 'VRLanguagesController@adminEdit']);
             Route::post('/edit', ['as' => 'admin.languages.update', 'uses' => 'VRLanguagesController@adminUpdate']);
             Route::get('/', ['as' => 'admin.languages.show', 'uses' => 'VRLanguagesController@adminShow']);
-            Route::delete('/', ['as' => 'admin.languages.delete', 'uses' => 'VRLanguagesController@adminDestroy']);
+            Route::delete('/delete', ['as' => 'admin.languages.delete', 'uses' => 'VRLanguagesController@adminDestroy']);
         });
     });
 
@@ -79,6 +79,11 @@ Route::group(['prefix' => 'admin'], function() {
     });
     
 
-
-
 });
+
+Route::get('/', [
+
+    'uses'  => 'FrontEndController@index',
+    'as'    => 'frontend.index'
+
+]);

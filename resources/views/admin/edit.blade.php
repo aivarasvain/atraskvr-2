@@ -12,6 +12,32 @@
                 Page Header
                 <small>Optional description</small>
             </h1>
+
+
+
+            @if (count($errors) > 0)
+                <div class="box-body">
+                    <div class="alert alert-danger">
+                        <h4>Something wrong! </h4>
+                        @foreach ($errors->all() as $error)
+                            <i class="icon fa fa-ban"></i>{{$error}}<br>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if(Session::has('success'))
+                <div class="box-body">
+                    <div class="alert alert-success">
+                        <i class="icon fa fa-check"></i>{{Session::get('success')}}
+                    </div>
+                </div>
+
+            @endif
+
+
+
+
         </section>
 
 
@@ -64,22 +90,58 @@
 
                         </div>
 
-                    @elseif($field == 'description_short' || $field == 'description_long')
+                    @elseif($field == 'description_long')
+
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title">{{str_replace('_', ' ', $field)}}
+
+                                </h3>
+
+                                <div class="pull-right box-tools">
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <i class="fa fa-minus"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="box-body pad">
+
+                                <textarea id="editor1" name="{{$field}}" rows="10" cols="80">
+                                                {{$record[$field]}}
+                                </textarea>
+
+                            </div>
+                        </div>
+
+                    @elseif($field == 'description_short')
 
                         <div class="form-group">
-                            <label>{{str_replace('_id', '', $field)}}</label>
-                            <textarea name="{{$field}}" class="form-control" rows="3"></textarea>
+                            <label>{{str_replace('_', ' ', $field)}}</label>
+                            <textarea name="{{$field}}" class="form-control" rows="3">{{$record[$field]}}</textarea>
                         </div>
 
                     @elseif($field == 'image_id')
 
                         <div class="form-group">
                         <label for="exampleInputFile">Upload image</label>
-                        <input name="image" type="file" id="exampleInputFile">
+                        <input name="image" type="file" id="exampleInputFile" required>
 
                         <p class="help-block">Upload any image you want</p>
                         </div>
 
+                    @elseif($field == 'slug')
+                        {{--Doesnt show slug field--}}
+
+                    @elseif($field == 'google_map' || $field == 'video_url')
+
+                        <div class="form-group">
+                            <label>Enter {{str_replace('_', ' ', $field)}}</label>
+                            <input value="{{$record['parentpage'][$field]}}" name="{{$field}}" type="text" class="form-control">
+                        </div>
 
                     @else
 
@@ -95,13 +157,9 @@
 
                 @endforeach
 
-
-
-
-
-
-
                 <input class="btn btn-success btn-sm" type="submit">
+                <a class="btn btn-sm btn-primary" href="{{route('admin.' . $tableName . '.index')}}">Back to list</a>
+
                 {{csrf_field()}}
             </form>
         </div>

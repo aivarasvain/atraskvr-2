@@ -31,4 +31,9 @@ class VRCategories extends CoreModel
         return $this->fillable;
     }
 
+    public function translations()
+    {
+        return $this->hasOne(VRCategoriesTranslations::class, 'category_id', 'id')->where('language_id', app()->getLocale());
+    }
+
 }

@@ -9,6 +9,7 @@ use App\Models\VRPagesResourcesConnections;
 use App\Models\VRPagesTranslations;
 use App\Models\VRResources;
 use Illuminate\Http\Request;
+use Validator;
 
 class VRPagesController extends Controller
 {
@@ -69,28 +70,25 @@ class VRPagesController extends Controller
      */
     public function adminStore(Request $request)
     {
-        /**
-         * Gets all data from form
-         */
+
         $data = request()->all();
 
-
-        /**
-         * Get uploaded image
-         */
         $resource = request()->file('image');
 
+        $this->validate($request, [
+            'title' => 'required',
 
-        /**
-         * Uploads image
-         */
+        ]);
+
+
         $newDTResourcesController = new UploadController();
         $record = $newDTResourcesController->upload($resource);
 
+        $title = $data['title'];
 
-        /**
-         * Creating new record in vr_pages table
-         */
+        $data['slug']= str_slug($title, '-');
+
+
         $page = VRPages::create([
 
             'category_id' => $data['category_id'],
@@ -100,10 +98,6 @@ class VRPagesController extends Controller
 
         ]);
 
-
-        /**
-         * Creating new record in vr_pages_translations table
-         */
         VRPagesTranslations::create([
 
             'page_id'           => $page['id'],
@@ -113,19 +107,19 @@ class VRPagesController extends Controller
             'description_long'  => $data['description_long'],
             'slug'              => $data['slug']
 
-
         ]);
 
 
-        /**
-         * Creating new record in vr_pages_recources_connection table
-         */
         VRPagesResourcesConnections::create([
 
             'page_id'       => $page['id'],
             'resource_id'   => $record->id
 
         ]);
+
+
+
+        return redirect()->route('admin.pages.create')->with('success', 'Record added');
 
 
 
@@ -166,6 +160,7 @@ class VRPagesController extends Controller
 
         $configuration['fields'] = $fields;
         $configuration['categories'] = VRCategories::get()->toArray();
+        $configuration['record'] = VRPagesTranslations::where('id', $id)->with('parentpage')->first()->toArray();
         $configuration['record'] = VRPagesTranslations::find($id);
         $configuration['tableName'] = $dataFromModel->getTableName();
         $configuration['languages'] = VRLanguages::get()->toArray();
@@ -182,11 +177,76 @@ class VRPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function adminUpdate(Request $request, $id)
     {
-//        $record = DTPizzas::find($id);
-//        $data = request()->all();
-//        $record->update($data);
+
+        $data = request()->all();
+
+        $singlePageTranslation = VRPagesTranslations::find($id);
+
+        $pageId = VRPagesTranslations::where('id', $id)->select('page_id')->get()->toArray();
+
+        $singlePage = VRPages::find($pageId[0]['page_id']);
+
+        $resource = request()->file('image');
+
+        $newDTResourcesController = new UploadController();
+        $image = $newDTResourcesController->upload($resource);
+
+
+        $this->validate($request, [
+
+            'title' => 'required|unique:vr_pages_translations,title'
+
+        ]);
+
+
+        $title = $data['title'];
+
+        $data['slug'] = str_slug($title, '-');
+
+
+        if($singlePageTranslation['language_id'] == $data['language_id']) {
+
+
+            $singlePage->update([
+
+                'category_id' => $data['category_id'],
+                'google_map'  => $data['google_map'],
+                'image_id'    => $image->id,
+                'video_url'   => $data['video_url']
+
+            ]);
+
+            $singlePageTranslation->update([
+
+                'language_id'         => $data['language_id'],
+                'title'               => $data['title'],
+                'description_short'   => $data['description_short'],
+                'description_long'    => $data['description_long'],
+                'slug'                => $data['slug']
+
+            ]);
+
+        } else {
+
+
+            $singlePageTranslation->create([
+
+                'page_id'             => $singlePage['id'],
+                'language_id'         => $data['language_id'],
+                'title'               => $data['title'],
+                'description_short'   => $data['description_short'],
+                'description_long'    => $data['description_long'],
+                'slug'                => $data['slug']
+
+            ]);
+
+        }
+
+        return redirect()->route('admin.pages.edit', $id)->with('success', 'Record added');
+
+
     }
 
     /**

@@ -17,7 +17,7 @@
 
     <section class="content">
 
-        <div class="container">
+
 
             <div class="row">
 
@@ -75,7 +75,7 @@
                                 </tr>
 
                                 @foreach($list as $item)
-                                <tr>
+                                <tr id="{{$item['id']}}">
 
 
 
@@ -118,7 +118,7 @@
                                     @endforeach
                                         <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
                                         <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
-                                        <td><a class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
+                                        <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
                                 </tr>
 
 
@@ -135,8 +135,32 @@
                     <!-- /.box -->
                 </div>
             </div>
-        </div>
+
 
     </section>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        function deleteItem(route) {
+
+            $.ajax({
+                url: route,
+                type: 'DELETE',
+                data: {},
+                dataType: 'json',
+                success: function (r) {
+                    $("#" + r.id).remove();
+
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }
+    </script>
 
 @endsection

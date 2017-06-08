@@ -6,6 +6,7 @@ use App\Models\VRCategories;
 use App\Models\VRCategoriesTranslations;
 use App\Models\VRLanguages;
 use Illuminate\Http\Request;
+use Validator;
 
 class VRCategoriesController extends Controller
 {
@@ -65,6 +66,18 @@ class VRCategoriesController extends Controller
     {
         $data = request()->all();
 
+        $this->validate($request, [
+
+            'language_id' => 'required',
+            'name' => 'required|alpha',
+            'slug' => 'required|alpha',
+
+        ]);
+
+        $title = $data['title'];
+
+        $data['slug'] = str_slug($title, '-');
+
         $category = VRCategories::create([
 
             'parent_id' => $data['parent_id']
@@ -79,6 +92,11 @@ class VRCategoriesController extends Controller
             'slug'        => $data['slug']
 
         ]);
+
+
+        return redirect()->route('admin.categories.create')->with('success', 'Record added');
+
+
     }
 
     /**
@@ -134,18 +152,63 @@ class VRCategoriesController extends Controller
      */
     public function adminUpdate(Request $request, $id)
     {
-        $record = VRCategoriesTranslations::find($id);
-        $categoryId = VRCategoriesTranslations::where('id', $id)->select('category_id')->get()->toArray();
-        $record1 = VRCategories::where('id', $categoryId[0]['category_id'])->get();
-
-
-
 
 
         $data = request()->all();
-        $record1->update([
-            'parent_id' => $data['parent_id'],
+
+        $singleCategoryTranslation = VRCategoriesTranslations::find($id);
+
+        $categoryId = VRCategoriesTranslations::where('id', $id)->select('category_id')->get()->toArray();
+
+        $singleCategory = VRCategories::find($categoryId[0]['category_id']);
+
+
+
+        $this->validate($request, [
+
+            'name' => 'required',
+
         ]);
+
+        $title = $data['name'];
+
+        $data['slug'] = str_slug($title, '-');
+
+
+        if($singleCategoryTranslation['language_id'] == $data['language_id']) {
+
+
+            $singleCategory->update([
+
+                'parent_id' => $data['parent_id'],
+
+            ]);
+
+            $singleCategoryTranslation->update([
+
+                'language_id' => $data['language_id'],
+                'name'        => $data['name'],
+                'slug'        => $data['slug'],
+
+            ]);
+
+        } else {
+
+
+            $singleCategoryTranslation->create([
+
+                'category_id' => $singleCategory['id'],
+                'language_id' => $data['language_id'],
+                'name'        => $data['name'],
+                'slug'        => $data['slug']
+
+            ]);
+
+        }
+
+        return redirect()->route('admin.categories.edit', $id)->with('success', 'Record added');
+
+
     }
 
     /**

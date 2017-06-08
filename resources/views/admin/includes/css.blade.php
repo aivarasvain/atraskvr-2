@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{{asset('dist/css/skins/skin-red.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VRLanguages;
 use Illuminate\Http\Request;
+use Validator;
 
 class VRLanguagesController extends Controller
 {
@@ -48,13 +49,24 @@ class VRLanguagesController extends Controller
     {
         $data = request()->all();
 
-        VRLanguages::create([
+        $this->validate($request, [
+            'language_code' => 'required|max:2|unique:vr_languages,language_code',
+            'name' => 'required',
+        ]);
 
+        VRLanguages::create([
             'id'            => $data['language_code'],
             'language_code' => $data['language_code'],
             'name'          => $data['name']
-
         ]);
+
+
+        return redirect()->route('admin.languages.create')->with('success', 'Record added');
+
+
+
+
+
     }
 
     /**
@@ -99,9 +111,21 @@ class VRLanguagesController extends Controller
      */
     public function adminUpdate(Request $request, $id)
     {
+
         $record = VRLanguages::find($id);
+
         $data = request()->all();
+
+        $this->validate($request, [
+            'language_code' => 'required|max:2',
+            'name' => 'required|max:13',
+        ]);
+
         $record->update($data);
+
+
+        return redirect()->route('admin.languages.edit', $id)->with('success', 'Record added');
+
     }
 
     /**
@@ -110,8 +134,13 @@ class VRLanguagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function adminDestroy($id)
     {
-        //
+
+
+        if (VRLanguages::destroy($id))
+        {
+            return json_encode(["success" => true, "id" => $id]);
+        }
     }
 }
