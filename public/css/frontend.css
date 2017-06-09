@@ -119,9 +119,9 @@ body {
     width: 252px;
     background: url("../images/elektro_markt_logo.png") no-repeat center center;
     margin: 0 auto;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
     background-size: contain;
     background-position-y: +100px;
 
@@ -161,13 +161,168 @@ body {
 }
 
 
-.irregular-shape {
+
+.white-shape {
 
     width: 100%;
-    height: 500px;
+    height: 200px;
     position: absolute;
     left: 0;
-    bottom: -240px;
+    bottom: -120px;
+    background: url("../images/irregular_shape.png") no-repeat center center;
+
+
+}
+
+/************************************************************************************/
+
+
+.section-title {
+
+    font-size: 38px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+
+
+}
+
+
+#apie {
+    width: 794px;
+    margin: 88px auto 40px;
+}
+
+#apie p {
+
+    font-size: 18px;
+    color: #252525;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 22px;
+    opacity: 0.8;
+    margin-top: 25px;
+
+
+}
+
+
+#video {
+    width: 100%;
+    margin: 70px 0 40px;
+}
+
+.white-shape-about {
+
+    width: 100%;
+    height: 200px;
+    position: relative;
+    left: 0;
+    bottom: 107px;
     background: url("../images/irregular_shape.png") no-repeat center center;
 
 }
+
+
+#kambariai {
+
+    background-color: #FD7B52;
+    width: 100%;
+    margin-top:100px;
+    /*padding-bottom: 150px;*/
+}
+
+#kambariai h1 {
+    color: #fff;
+    margin-bottom: 100px;
+}
+
+#kambariai h4 {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+}
+
+.experience {
+
+    text-align: center;
+    height: 600px;
+
+
+
+}
+
+.experience p {
+
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+
+}
+
+
+
+.experience-text {
+
+    padding: 0 65px;
+
+}
+
+.experience-image {
+
+    height: 356px;
+    width: 356px;
+    margin: 0 auto;
+}
+
+.experience-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#map {
+    width: 835px;
+    height: 314px;
+    margin: 0 auto;
+}
+
+.white-shape-vieta {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    left: 0;
+    bottom: -83px;
+    background: url("../images/irregular_shape.png") no-repeat center center;
+}
+
+#vieta {
+    margin-top: 100px;
+}
+
+#vieta h1 {
+    margin-bottom: 25px;
+}
+
+#vieta p {
+    font-size: 18px;
+    color: #252525;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 22px;
+    opacity: 0.8;
+    margin-top: 25px;
+}
+
+#vietaText {
+    width: 835px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+
+
+
+
+

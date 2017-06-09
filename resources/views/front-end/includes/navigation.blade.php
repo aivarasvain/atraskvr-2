@@ -19,14 +19,20 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$category['translations']['name']}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
 
-                                <li><a href="#">labas</a></li>
+                                @foreach($experiences as $experience)
+
+                                    <li><a href="#">{{$experience['translations']['title']}}</a></li>
+
+                                @endforeach
+
+
 
                             </ul>
                         </li>
 
                     @else
 
-                        <li><a href="#">{{$category['translations']['name']}}</a></li>
+                        <li><a href="#{{$category['id']}}">{{$category['translations']['name']}}</a></li>
 
 
                     @endif
@@ -50,8 +56,8 @@
             <ul class="nav navbar-nav navbar-right">
 
                 @if(!auth()->user())
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign Up</a></li>
+                    <li><a href="{{route('login')}}">{{trans('frontend.login')}}</a></li>
+                    <li><a href="{{route('register')}}">{{trans('frontend.signup')}}</a></li>
 
                 @else
 
@@ -60,12 +66,12 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{auth()->user()->full_name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
 
-                            <li><a href="{{route('user.index')}}">Orders</a></li>
+                            <li><a href="{{route('user.index')}}">{{trans('frontend.orders')}}</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
-                                    Logout
+                                    {{trans('frontend.logout')}}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

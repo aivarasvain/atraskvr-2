@@ -5,7 +5,11 @@ return [
     'inspired_by'           => 'Inspired by',
     'main_title'            => 'Discover Vr',
     'header_description'    => '[EN]Pamatyk pasaulį kitomis akimis. Virtualios realybės patirčių paroda!',
-    'language'              => 'Language'
+    'language'              => 'Language',
+    'login'                 => 'Log in',
+    'signup'                => 'Sign up',
+    'orders'                => 'Orders',
+    'logout'                => 'Log out'
 
 
 ];
