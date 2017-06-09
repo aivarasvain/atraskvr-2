@@ -11,6 +11,26 @@
 |
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function() {
 
     Route::get('/', function() {
@@ -82,6 +102,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function()
 });
 
 
+
 Route::group(['prefix' => 'user', 'middleware' => 'check-if-user'], function() {
 
     Route::get('/',  function() {
@@ -93,22 +114,17 @@ Route::group(['prefix' => 'user', 'middleware' => 'check-if-user'], function() {
 });
 
 
+Auth::routes();
 
-//, 'middleware' => 'check-language'
 
-//Route::group(['prefix' => '{language}'], function () {
+Route::group(['prefix' => '{language?}', 'middleware' => 'check-language'], function () {
 
     Route::get('/', [
 
         'uses'  => 'FrontEndController@index',
         'as'    => 'frontend.index'
 
-    ]);
-
-//});
+    ])->where('language', 'lt|en');
 
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});
