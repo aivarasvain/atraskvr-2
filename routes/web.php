@@ -119,12 +119,14 @@ Auth::routes();
 
 Route::group(['prefix' => '{language?}', 'middleware' => 'check-language'], function () {
 
-    Route::get('/', [
+    Route::get('/', ['uses'  => 'FrontEndController@index', 'as'    => 'frontend.index']);
 
-        'uses'  => 'FrontEndController@index',
-        'as'    => 'frontend.index'
+    Route::group(['prefix' => 'reservations'], function() {
 
-    ])->where('language', 'lt|en');
+        Route::get('/create', ['uses'  => 'ReservationController@index', 'as'    => 'frontend.reservation.create']);
+
+    });
+
 
 
 });

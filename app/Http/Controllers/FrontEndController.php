@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\VRCategories;
+use App\Models\VRPages;
+use App\Models\VRResources;
 use App\Models\VRUsers;
 use Illuminate\Http\Request;
 
@@ -15,9 +17,10 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-
-
-
+        $configuration['resources']  = VRResources::pluck('path', 'id');
+        $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
+        $configuration['aboutPage'] = VRPages::with('translations')->where('category_id', 'apie')->get()->toArray();
+        $configuration['vietaPage'] = VRPages::with('translations')->where('category_id', 'vieta')->get()->toArray();
         $configuration['categories'] = VRCategories::with('translations')->where('parent_id', 'menu')->get()->toArray();
 
         return view('front-end.index', $configuration);

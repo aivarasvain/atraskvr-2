@@ -196,7 +196,7 @@ class VRPagesController extends Controller
 
         $this->validate($request, [
 
-            'title' => 'required|unique:vr_pages_translations,title'
+            'title' => 'required'
 
         ]);
 
