@@ -1,5 +1,6 @@
 @extends('auth.core')
 
+@section('title') Login @endsection
 
 @section('content')
 
@@ -15,7 +16,7 @@
                 {{ csrf_field() }}
 
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
                     <input name="email" value="{{ old('email') }}" type="email" class="form-control" placeholder="Email"
                            required autofocus>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -29,7 +30,7 @@
                 </div>
 
 
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} ">
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
                     <input name="password" type="password" class="form-control" placeholder="Password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     @if ($errors->has('password'))

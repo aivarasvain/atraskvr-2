@@ -1,5 +1,7 @@
 @extends('auth.core')
 
+@section('title') Register @endsection
+
 @section('content')
 
 
@@ -43,7 +45,7 @@
 
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{ old('phone') }}">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-phone form-control-feedback"></span>
 
             </div>
 
