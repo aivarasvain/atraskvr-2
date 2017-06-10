@@ -159,9 +159,10 @@ class VRPagesController extends Controller
         $fields = array_merge($categoriesFillables, $categoriesTranslationsFillables);
 
         $configuration['fields'] = $fields;
+        $configuration['pages'] = VRPages::get()->toArray();
         $configuration['categories'] = VRCategories::get()->toArray();
         $configuration['record'] = VRPagesTranslations::where('id', $id)->with('parentpage')->first()->toArray();
-        $configuration['record'] = VRPagesTranslations::find($id);
+//        $configuration['record'] = VRPagesTranslations::find($id);
         $configuration['tableName'] = $dataFromModel->getTableName();
         $configuration['languages'] = VRLanguages::get()->toArray();
 

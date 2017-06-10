@@ -81,7 +81,13 @@
                                 @foreach($categories as $category)
 
 
-                                    <option value="{{$category['id']}}">{{$category['id']}}</option>
+                                    <option value="{{$category['id']}}"
+
+                                        @if($category['id'] == $record['parentpage']['category_id'])
+                                            {{'selected'}}
+                                        @endif
+
+                                    >{{$category['id']}}</option>
 
                                 @endforeach
 
