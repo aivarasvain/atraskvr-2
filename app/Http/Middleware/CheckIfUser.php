@@ -28,7 +28,7 @@ class CheckIfUser
         }
 
 
-        return abort(403, "no permission!");
+        return redirect()->route('login');
 
 
 

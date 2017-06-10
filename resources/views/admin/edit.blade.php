@@ -15,6 +15,7 @@
 
 
 
+
             @if (count($errors) > 0)
                 <div class="box-body">
                     <div class="alert alert-danger">
@@ -24,15 +25,6 @@
                         @endforeach
                     </div>
                 </div>
-            @endif
-
-            @if(Session::has('success'))
-                <div class="box-body">
-                    <div class="alert alert-success">
-                        <i class="icon fa fa-check"></i>{{Session::get('success')}}
-                    </div>
-                </div>
-
             @endif
 
 

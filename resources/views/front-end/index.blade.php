@@ -84,7 +84,7 @@
 
                                 @if($id == $experience['image_id'])
 
-                                    <img src="{{asset($path)}}" alt="">
+                                    <a href="{{route('frontend.show', [app()->getLocale(), $experience['id']])}}"><img src="{{asset($path)}}" alt=""></a>
 
                                 @endif
                             @endforeach

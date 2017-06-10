@@ -61,7 +61,7 @@ class VRLanguagesController extends Controller
         ]);
 
 
-        return redirect()->route('admin.languages.create')->with('success', 'Record added');
+        return redirect()->route('admin.languages.index')->with('success', 'Record added');
 
 
 
@@ -124,7 +124,7 @@ class VRLanguagesController extends Controller
         $record->update($data);
 
 
-        return redirect()->route('admin.languages.edit', $id)->with('success', 'Record added');
+        return redirect()->route('admin.languages.index', $id)->with('success', 'Record added');
 
     }
 

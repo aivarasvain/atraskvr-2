@@ -21,4 +21,5 @@ class VRReservations extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'time', 'order_id', 'page_id'];
+
 }

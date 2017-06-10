@@ -94,7 +94,7 @@ class VRCategoriesController extends Controller
         ]);
 
 
-        return redirect()->route('admin.categories.create')->with('success', 'Record added');
+        return redirect()->route('admin.categories.index')->with('success', 'Record added');
 
 
     }
@@ -206,7 +206,7 @@ class VRCategoriesController extends Controller
 
         }
 
-        return redirect()->route('admin.categories.edit', $id)->with('success', 'Record added');
+        return redirect()->route('admin.categories.index', $id)->with('success', 'Record added');
 
 
     }

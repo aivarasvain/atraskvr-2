@@ -5,3 +5,5 @@
 <link rel="stylesheet" href="{{asset('css/frontend.css')}}">
 <link rel="stylesheet" href="{{asset('css/1024.css')}}">
 <link rel="stylesheet" href="{{asset('css/640.css')}}">
+
+

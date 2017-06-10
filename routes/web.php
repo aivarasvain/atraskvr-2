@@ -116,17 +116,21 @@ Route::group(['prefix' => 'user', 'middleware' => 'check-if-user'], function() {
 
 Auth::routes();
 
+Route::group(['prefix' => 'reservations'], function() {
+
+    Route::get('/create/{day?}', ['uses'  => 'ReservationController@create', 'as'    => 'frontend.reservation.create']);
+    Route::post('/create', ['uses'  => 'ReservationController@store', 'as'    => 'frontend.reservation.store']);
+
+});
+
 
 Route::group(['prefix' => '{language?}', 'middleware' => 'check-language'], function () {
 
     Route::get('/', ['uses'  => 'FrontEndController@index', 'as'    => 'frontend.index']);
-
-    Route::group(['prefix' => 'reservations'], function() {
-
-        Route::get('/create', ['uses'  => 'ReservationController@index', 'as'    => 'frontend.reservation.create']);
-
-    });
+    Route::get('/{id}', ['uses'  => 'FrontEndController@show', 'as'    => 'frontend.show']);
 
 
 
 });
+
+

@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
 {
+
+    public static function navConfiguration()
+    {
+        $configuration = [];
+        $configuration['resources']  = VRResources::pluck('path', 'id');
+        $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
+        $configuration['categories'] = VRCategories::with('translations')->where('parent_id', 'menu')->get()->toArray();
+        return $configuration;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +27,10 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-        $configuration['resources']  = VRResources::pluck('path', 'id');
-        $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
+        $configuration = self::navConfiguration();
         $configuration['aboutPage'] = VRPages::with('translations')->where('category_id', 'apie')->get()->toArray();
         $configuration['vietaPage'] = VRPages::with('translations')->where('category_id', 'vieta')->get()->toArray();
-        $configuration['categories'] = VRCategories::with('translations')->where('parent_id', 'menu')->get()->toArray();
+
 
         return view('front-end.index', $configuration);
     }
@@ -53,9 +62,14 @@ class FrontEndController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($language, $id)
     {
-        //
+
+
+        $configuration = self::navConfiguration();
+        $configuration['record'] = VRPages::with('translations')->find($id)->toArray();
+        return view('front-end.single', $configuration);
+
     }
 
     /**

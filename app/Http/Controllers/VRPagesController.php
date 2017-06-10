@@ -119,7 +119,7 @@ class VRPagesController extends Controller
 
 
 
-        return redirect()->route('admin.pages.create')->with('success', 'Record added');
+        return redirect()->route('admin.pages.index')->with('success', 'Record added');
 
 
 
@@ -245,7 +245,7 @@ class VRPagesController extends Controller
 
         }
 
-        return redirect()->route('admin.pages.edit', $id)->with('success', 'Record added');
+        return redirect()->route('admin.pages.index', $id)->with('success', 'Record added');
 
 
     }

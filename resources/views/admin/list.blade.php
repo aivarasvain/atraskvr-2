@@ -11,6 +11,24 @@
                 Page Header
                 <small>Optional description</small>
             </h1>
+
+
+
+
+
+            @if(Session::has('success'))
+                <div class="box-body">
+                    <div class="alert alert-success">
+                        <i class="icon fa fa-check"></i>{{Session::get('success')}}
+                    </div>
+                </div>
+
+            @endif
+
+
+
+
+
         </section>
     </div>
 
