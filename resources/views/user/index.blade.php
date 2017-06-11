@@ -17,40 +17,20 @@
         <div class="box-body table-responsive no-padding">
             <table class="table table-hover">
                 <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
+                    <th>Order ID</th>
                     <th>Status</th>
-                    <th>Reason</th>
+                    <th>View</th>
+                    <th>Cancel</th>
                 </tr>
-                <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="label label-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                    <td>219</td>
-                    <td>Alexander Pierce</td>
-                    <td>11-7-2014</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="label label-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="label label-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
+                @foreach($orders as $order)
+                    <tr>
+                        <td>{{$order['id']}}</td>
+                        <td>{{$order['status']}}</td>
+                        <td><a href="{{route('user.orders.show', $order['id'])}}">View</a></td>
+                        <td><a href="">Cancel</a></td>
+                    </tr>
+
+                @endforeach
             </table>
         </div>
 

@@ -32,7 +32,6 @@
         </section>
     </div>
 
-
     <section class="content">
 
 
@@ -57,16 +56,13 @@
 
                                         @foreach($list[0] as $key => $value)
 
-                                            @if($key == 'description_long' || $key == 'description_short')
+                                            @if($key == 'description_long' || $key == 'description_short' || $key == 'id' || $key == 'password' || $key == 'remember_token' || $key == 'roles_connections')
 
 
                                             @elseif($key == 'parentpage')
                                                 <th>Image</th>
                                                 <th>Video</th>
                                                 <th>Google map</th>
-
-                                            @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
-                                                {{--Dont show id--}}
 
                                             @else
                                                 <th>{{ucfirst(str_replace('_', ' ', $key))}}</th>
@@ -94,8 +90,7 @@
                                         <th>Delete</th>
 
                                     @elseif($tableName == 'users')
-
-                                        <th>Edit</th>
+                                        <th>Role</th>
 
                                     @endif
                                 </tr>
@@ -133,7 +128,31 @@
                                         @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
                                             {{--Dont show fields--}}
 
-                                        @else
+                                        @elseif($key == 'roles_connections')
+
+                                            @foreach($record as $role)
+
+                                                <td>{{$role['role_id']}}</td>
+
+                                            @endforeach
+
+                                        @elseif($key == 'user_id')
+
+                                            @foreach($users as $user)
+
+                                                @if($user['id'] == $record)
+
+                                                    <td>{{$user['full_name']}}</td>
+
+                                                @endif
+
+                                            @endforeach
+
+
+
+
+
+                                            @else
 
                                             <td>{{$record}}</td>
 
@@ -148,9 +167,6 @@
                                             <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
                                             <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
                                             <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
-
-                                        @elseif($tableName == 'users')
-                                            <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
                                         @endif
 
 

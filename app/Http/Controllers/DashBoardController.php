@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VROrders;
+use App\Models\VRUsers;
 use Illuminate\Http\Request;
 
 class DashBoardController extends Controller
@@ -13,7 +15,9 @@ class DashBoardController extends Controller
      */
     public function index()
     {
-        //
+        $configuration['ordersCount'] = VROrders::count();
+        $configuration['usersCount'] = VRUsers::count();
+        return view('admin.home', $configuration);
     }
 
     /**

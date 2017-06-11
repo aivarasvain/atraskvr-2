@@ -26,4 +26,9 @@ class VROrders extends CoreModel
      * @var array
      */
     protected $hidden = ['count', 'created_at', 'updated_at', 'deleted_at'];
+
+    public function reservations()
+    {
+        return $this->hasMany(VRReservations::class, 'order_id', 'id');
+    }
 }

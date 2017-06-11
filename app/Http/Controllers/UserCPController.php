@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VRUsers;
+use App\Models\VROrders;
+use App\Models\VRPages;
+use App\Models\VRResources;
 use Illuminate\Http\Request;
 
-class VRUsersController extends Controller
+class UserCPController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminIndex()
+    public function index()
     {
-        $configuration['list'] = VRUsers::with('rolesConnections')->get()->toArray();
-        $dataFromModel = new VRUsers();
 
-        $configuration['tableName'] = $dataFromModel->getTableName();
 
-        return view('admin.list', $configuration);
+        $configuration['orders'] = VROrders::with('reservations')->where('user_id', auth()->user()->id)->get()->toArray();
+        return view('user.index', $configuration);
     }
 
     /**
@@ -51,7 +51,10 @@ class VRUsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $configuration['record'] = VROrders::with('reservations')->find($id);
+        $configuration['pages'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
+        $configuration['resources'] = VRResources::get()->toArray();
+        return view('user.view', $configuration);
     }
 
     /**

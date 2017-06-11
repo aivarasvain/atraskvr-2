@@ -66,7 +66,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{auth()->user()->full_name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
 
-                            <li><a href="{{route('user.index')}}">{{trans('frontend.orders')}}</a></li>
+                            <li><a href="{{route('user.orders.index')}}">{{trans('frontend.orders')}}</a></li>
 
                             @if(auth()->user()->full_name == 'admin')
 

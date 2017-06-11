@@ -33,9 +33,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function() {
 
-    Route::get('/', function() {
-       return view('admin.home');
-    })->name('admin.home');
+    Route::get('/', [
+
+        'uses' => 'DashBoardController@index',
+        'as'   => 'admin.home'
+
+    ]);
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', ['as' => 'admin.categories.index','uses' => 'VRCategoriesController@adminIndex']);
@@ -105,11 +108,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function()
 
 Route::group(['prefix' => 'user', 'middleware' => 'check-if-user'], function() {
 
-    Route::get('/',  function() {
-
-        return view('user.index');
-
-    })->name('user.index');
+    Route::get('/', ['uses'  => 'UserCPController@index', 'as'    => 'user.orders.index']);
+    Route::get('/{id}', ['uses'  => 'UserCPController@show', 'as'    => 'user.orders.show']);
 
 });
 
