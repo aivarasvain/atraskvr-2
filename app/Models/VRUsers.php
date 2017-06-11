@@ -46,5 +46,10 @@ class VRUsers extends Authenticatable
         return $this->hasMany(VRUsersRolesConnections::class, 'user_id', 'id');
     }
 
+    public function getTableName()
+    {
+        $tableName = substr($this->table, 3);
 
+        return $tableName;
+    }
 }

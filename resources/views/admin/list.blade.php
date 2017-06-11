@@ -65,7 +65,7 @@
                                                 <th>Video</th>
                                                 <th>Google map</th>
 
-                                            @elseif($key == 'id')
+                                            @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
                                                 {{--Dont show id--}}
 
                                             @else
@@ -87,9 +87,17 @@
 
                                     @endif
 
-                                    <th>View</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    @if($tableName != 'users')
+
+                                        <th>View</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+
+                                    @elseif($tableName == 'users')
+
+                                        <th>Edit</th>
+
+                                    @endif
                                 </tr>
 
                                 @foreach($list as $item)
@@ -122,8 +130,8 @@
                                             <td>{{$record['video_url']}}</td>
                                             <td>{{$record['google_map']}}</td>
 
-                                        @elseif($key == 'id')
-                                            {{--Dont show id data--}}
+                                        @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
+                                            {{--Dont show fields--}}
 
                                         @else
 
@@ -134,9 +142,20 @@
 
 
                                     @endforeach
-                                        <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
-                                        <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
-                                        <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
+
+                                        @if($tableName != 'users')
+
+                                            <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
+                                            <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
+                                            <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
+
+                                        @elseif($tableName == 'users')
+                                            <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
+                                        @endif
+
+
+
+
                                 </tr>
 
 
@@ -157,6 +176,11 @@
 
     </section>
 
+
+
+@endsection
+
+@section('script')
     <script>
         $.ajaxSetup({
             headers: {
@@ -180,5 +204,4 @@
             });
         }
     </script>
-
 @endsection

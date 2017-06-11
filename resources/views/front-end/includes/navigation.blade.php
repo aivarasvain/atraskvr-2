@@ -67,6 +67,13 @@
                         <ul class="dropdown-menu">
 
                             <li><a href="{{route('user.index')}}">{{trans('frontend.orders')}}</a></li>
+
+                            @if(auth()->user()->full_name == 'admin')
+
+                                <li><a href="{{route('admin.home')}}">Admin CP</a></li>
+
+                            @endif
+
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

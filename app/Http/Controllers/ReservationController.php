@@ -50,7 +50,6 @@ class ReservationController extends Controller
     public function create($day = null)
     {
 
-
         if(auth()->check() == true) {
 
             if($day == null)
@@ -61,7 +60,7 @@ class ReservationController extends Controller
 
 
             $startDay = Carbon::today();
-            $endDay = Carbon::today()->addWeeks(2);
+            $endDay = Carbon::today()->addWeeks(2)->addDays(3);
 
 
 
@@ -70,10 +69,12 @@ class ReservationController extends Controller
 
             $configuration = FrontEndController::navConfiguration();
             $configuration['times'] = $this->generateDateRange($startTime, $endTime, 'addMinutes', 10, 'H:i');
-            $configuration['days'] = $this->generateDateRange($startDay, $endDay, 'addDays', 1, 'y-m-d');
+            $configuration['days'] = $this->generateDateRange($startDay, $endDay, 'addDays', 1, 'Y-m-d');
             $configuration['today'] = Carbon::today()->toDateString();
             $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
             $configuration['day_from_url'] = $day;
+            $configuration['resources'] = VRResources::get()->toArray();
+            $configuration['reservations'] = VRReservations::get()->toArray();
 
 
 
@@ -112,7 +113,7 @@ class ReservationController extends Controller
 
             VRReservations::create([
 
-                'time' => json_encode($value),
+                'time' => $value,
                 'page_id' => $key,
                 'order_id' => $order['id']
 
@@ -122,7 +123,7 @@ class ReservationController extends Controller
         }
 
 
-
+        return redirect()->route('frontend.reservation.create')->with('success', 'Time successfully reserved.');
 
 
     }

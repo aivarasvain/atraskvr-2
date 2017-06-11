@@ -15,6 +15,9 @@ class VRUsersController extends Controller
     public function adminIndex()
     {
         $configuration['list'] = VRUsers::get()->toArray();
+        $dataFromModel = new VRUsers();
+
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         return view('admin.list', $configuration);
     }

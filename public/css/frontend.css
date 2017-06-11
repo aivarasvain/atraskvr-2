@@ -342,6 +342,100 @@ body {
 
 
 
+/**********Reservation system styles**************/
+
+#reservationExperiences {
+
+    margin-top: 50px;
+
+}
+
+.reservation-experience {
+
+    height: 200px;
+    display: block;
+
+}
+
+.reservation-image {
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
+
+.time-select {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.select2-container--default .select2-selection--multiple {
+
+    border: none;
+    width: 150px;
+
+
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: none;
+}
+
+
+
+.select2-results__options {
+    width: 250px;
+    background-color: white;
+}
+
+.select2-results__option {
+
+    display: inline-block;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+
+
+    overflow-y: auto;
+
+}
+
+/*.pagination-lg>li>a, .pagination-lg>li>span {*/
+
+    /*color: #808080;*/
+
+/*}*/
+
+/*.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {*/
+
+    /*color: #252525;*/
+    /*background-color: #808080;*/
+    /*border: 1px solid #808080;*/
+
+/*}*/
+
+/*.pagination-lg>li>a:hover, .pagination-lg>li>span:hover {*/
+
+    /*color: #fff;*/
+    /*background-color: black;*/
+
+/*}*/
+
+.pagination-lg>li:last-child>a, .pagination-lg>li:last-child>span, .pagination-lg>li:first-child>a, .pagination-lg>li:first-child>span {
+    border-radius: 0;
+}
+#reservationButton {
+
+    border-radius: 5px;
+
+    margin-bottom: 150px;
+}
+
+
+/***************End of reservation system styles*****************/
+
+
 
 
 

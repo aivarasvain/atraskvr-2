@@ -10,7 +10,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{{auth()->user()->full_name}}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -32,6 +32,9 @@
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
+
+            @if(auth()->user()->full_name == 'admin')
+
 
             <li><a href="{{route('admin.home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
 
@@ -76,6 +79,8 @@
 
             <li><a href="{{route('admin.users.index')}}"><i class="fa fa-user"></i> <span>Users</span></a></li>
             <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-calendar-o"></i> <span>Orders</span></a></li>
+
+            @endif
 
         </ul>
         <!-- /.sidebar-menu -->

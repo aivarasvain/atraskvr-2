@@ -15,6 +15,9 @@ class VROrdersController extends Controller
     public function adminIndex()
     {
         $configuration['list'] = VROrders::get()->toArray();
+        $dataFromModel = new VROrders();
+
+        $configuration['tableName'] = $dataFromModel->getTableName();
 
         return view('admin.list', $configuration);
     }
