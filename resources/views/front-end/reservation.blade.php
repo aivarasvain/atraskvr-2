@@ -29,7 +29,7 @@
         @if(Session::has('success'))
             <div class="box-body">
                 <div class="alert alert-success">
-                    <i class="icon fa fa-check"></i>{{Session::get('success')}}<a href="#"> View</a> my reservations
+                    <i class="icon fa fa-check"></i>{{Session::get('success')}}<a href="{{route('user.orders.index')}}"> View</a> my reservations
                 </div>
             </div>
 

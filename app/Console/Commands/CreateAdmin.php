@@ -19,6 +19,6 @@ class CreateAdministrator extends Command
             'password' => bcrypt($password = $this->secret('Please enter password')),
         ]);
         $record -> connection()-> sync('super-admin');
-        $this->comment("Great success!");
+        $this->comment("Admin account created!");
     }
 }

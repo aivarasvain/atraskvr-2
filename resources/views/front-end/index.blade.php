@@ -149,7 +149,7 @@
 
     <div id="bilietai">
 
-        <h1><a href="{{route('frontend.reservation.create', app()->getLocale())}}">PIRKTI</a></h1>
+        <h1><a href="{{route('frontend.reservation.create')}}">Rezervacija</a></h1>
 
     </div>
 
