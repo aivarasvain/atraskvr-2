@@ -113,7 +113,7 @@
 
 
 
-        <div class="white-shape-vieta"></div>
+        <div class="white-shape-kambariai"></div>
 
     </div>
 
@@ -145,13 +145,78 @@
 
 
     </div>
+    <div class="white-shape-tickets"></div>
+    <div id="tickets">
+
+        <div id="ticketsContent">
+
+        </div>
+
+        <div id="ticketsText">
+
+            @foreach($bilietaiCategory as $tickets)
+
+                <h1 class="section-title">{{$tickets['translations']['name']}}</h1>
+
+            @endforeach
 
 
-    <div id="bilietai">
+            <div id="ticketsSquare">
 
-        <h1><a href="{{route('frontend.reservation.create')}}">Rezervacija</a></h1>
+                <h5>{{trans('frontend.price_title')}}</h5>
+                <p>6&euro;</p>
+
+            </div>
+        </div>
+
+        <a href="{{route('frontend.reservation.create')}}"><div id="ticketsButton">
+            <h3>{{trans('frontend.buy_button')}}</h3>
+        </div></a>
+
+        <div class="white-shape-sponsors"></div>
+    </div>
+
+
+    <div id="sponsors">
+
+        @foreach($remejaiCategory as $sponsors)
+
+            <h1 class="section-title">{{$sponsors['translations']['name']}}</h1>
+
+        @endforeach
+
+        <div id="sponsorsContent">
+            <h5>{{trans('frontend.inspired_by')}}</h5>
+            <a target="_blank" href="https://www.elektromarkt.lt/"><div id="elektroMarktSponsors"></div></a>
+            <h5>{{trans('frontend.inform')}}</h5>
+            <a target="_blank" href="http://www.delfi.lt/"><div id="delfi"></div></a>
+            <h5>{{trans('frontend.organize')}}</h5>
+            <a target="_blank" href="http://akropolis.lt/"><div id="akropolis"></div></a><a target="_blank" href="http://litexpo.lt/"><div id="litexpo"></div></a><a target="_blank" href="https://www.telesoftas.com/"><div id="telesoftas"></div></a>
+            <h5>{{trans('frontend.inovations')}}</h5>
+            <a target="_blank" href="https://www.inida.lt/"><div id="inida"></div></a>
+
+        </div>
 
     </div>
+
+    <div id="footer">
+
+        <div class="white-shape-footer"></div>
+        <div id="footerText">
+
+            <h4>{{trans('frontend.more_information')}}</h4>
+            <p>paroda@atraskvr.lt</p>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
 
 
 @endsection

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\VROrders;
+use App\Models\VRPages;
+use App\Models\VRResources;
 use App\Models\VRUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VROrdersController extends Controller
 {
@@ -15,11 +18,15 @@ class VROrdersController extends Controller
      */
     public function adminIndex()
     {
+
         $configuration['list'] = VROrders::get()->toArray();
         $configuration['users'] = VRUsers::get()->toArray();
         $dataFromModel = new VROrders();
-
         $configuration['tableName'] = $dataFromModel->getTableName();
+
+        $configuration['orders'] = VROrders::paginate(10);
+
+
 
         return view('admin.list', $configuration);
     }
@@ -51,9 +58,15 @@ class VROrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function adminShow($id)
     {
-        //
+        $dataFromModel = new VROrders();
+        $configuration['tableName'] = $dataFromModel->getTableName();
+        $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
+        $configuration['resources'] = VRResources::get()->toArray();
+        $configuration['record'] = VROrders::with('reservations')->find($id)->toArray();
+
+        return view('admin.single', $configuration);
     }
 
     /**

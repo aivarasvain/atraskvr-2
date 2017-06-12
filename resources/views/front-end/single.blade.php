@@ -13,6 +13,8 @@
                 <div class="col-md-6  singleExperience experience">
                     <div class="experience-image">
 
+
+
                         @foreach($resources as $id => $path)
 
                             @if($id == $record['image_id'])

@@ -27,9 +27,12 @@ class FrontEndController extends Controller
      */
     public function index()
     {
+
         $configuration = self::navConfiguration();
         $configuration['aboutPage'] = VRPages::with('translations')->where('category_id', 'apie')->get()->toArray();
         $configuration['vietaPage'] = VRPages::with('translations')->where('category_id', 'vieta')->get()->toArray();
+        $configuration['bilietaiCategory'] = VRCategories::with('translations')->where('id', 'bilietai')->get()->toArray();
+        $configuration['remejaiCategory'] = VRCategories::with('translations')->where('id', 'remejai')->get()->toArray();
 
 
         return view('front-end.index', $configuration);

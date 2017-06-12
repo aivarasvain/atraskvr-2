@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Traits\UuidTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VRLanguages extends CoreModel
 {

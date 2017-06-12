@@ -9,7 +9,13 @@ return [
     'login'                 => 'Prisijungti',
     'signup'                => 'Registruotis',
     'orders'                => 'Užsakymai',
-    'logout'                => 'Atsijungti'
+    'logout'                => 'Atsijungti',
+    'price_title'           => '5 patirčių kaina',
+    'buy_button'            => 'Pirkti',
+    'inform'                => 'Informuoja',
+    'organize'              => 'Organizuoja',
+    'inovations'            => 'Inovacijas palaiko',
+    'more_information'     => 'Daugiau informacijos'
 
 
 ];

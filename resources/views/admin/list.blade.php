@@ -14,8 +14,6 @@
 
 
 
-
-
             @if(Session::has('success'))
                 <div class="box-body">
                     <div class="alert alert-success">
@@ -25,11 +23,9 @@
 
             @endif
 
-
-
-
-
         </section>
+
+
     </div>
 
     <section class="content">
@@ -44,15 +40,27 @@
 
                     <div id="tableForData" class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Responsive Hover Table</h3>
+                            <h3 class="box-title">{{$tableName . ' ' . 'list'}}</h3>
 
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
+
+                                {!! $orders->render() !!}
+
                                 <tr>
 
-                                    @if(isset($list[0]))
+
+                                    @if($tableName == 'orders')
+
+                                        <th>Status</th>
+                                        <th>User</th>
+
+                                    @endif
+
+
+                                    @if(isset($list[0]) && $tableName != 'orders')
 
                                         @foreach($list[0] as $key => $value)
 
@@ -72,7 +80,7 @@
 
                                         @endforeach
 
-                                    @else
+                                    @elseif(empty($list[0]))
 
                                         <div class="box-body">
                                             <div class="callout callout-info">
@@ -83,7 +91,7 @@
 
                                     @endif
 
-                                    @if($tableName != 'users')
+                                    @if($tableName != 'users' && $tableName != 'orders')
 
                                         <th>View</th>
                                         <th>Edit</th>
@@ -92,96 +100,138 @@
                                     @elseif($tableName == 'users')
                                         <th>Role</th>
 
+                                    @elseif($tableName == 'orders')
+                                        <th>View</th>
+                                        <th>Cancel</th>
+
                                     @endif
                                 </tr>
 
-                                @foreach($list as $item)
-                                <tr id="{{$item['id']}}">
+
+
+                                @if($tableName != 'orders')
+
+                                    @foreach($list as $item)
+                                    <tr id="{{$item['id']}}">
 
 
 
-                                    @foreach($item as $key => $record)
+                                        @foreach($item as $key => $record)
 
 
 
-                                        @if($key == 'description_long' || $key == 'description_short')
+                                            @if($key == 'description_long' || $key == 'description_short')
 
-                                        @elseif($key == 'parentpage')
-
-
-                                            @foreach($resources as $id => $path)
-
-                                               @if($id == $record['image_id'])
-
-                                                    <td><img id="imgInAdmin" src="{{asset($path)}}" alt=""></td>
+                                            @elseif($key == 'parentpage')
 
 
-                                               @endif
+                                                @foreach($resources as $id => $path)
+
+                                                   @if($id == $record['image_id'])
+
+                                                        <td><img id="imgInAdmin" src="{{asset($path)}}" alt=""></td>
 
 
-                                            @endforeach
+                                                   @endif
 
 
-                                            <td>{{$record['video_url']}}</td>
-                                            <td>{{$record['google_map']}}</td>
-
-                                        @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
-                                            {{--Dont show fields--}}
-
-                                        @elseif($key == 'roles_connections')
-
-                                            @foreach($record as $role)
-
-                                                <td>{{$role['role_id']}}</td>
-
-                                            @endforeach
-
-                                        @elseif($key == 'user_id')
-
-                                            @foreach($users as $user)
-
-                                                @if($user['id'] == $record)
-
-                                                    <td>{{$user['full_name']}}</td>
-
-                                                @endif
-
-                                            @endforeach
+                                                @endforeach
 
 
+                                                <td>{{$record['video_url']}}</td>
+                                                <td>{{$record['google_map']}}</td>
+
+                                            @elseif($key == 'id' || $key == 'password' || $key == 'remember_token')
+                                                {{--Dont show fields--}}
+
+                                            @elseif($key == 'roles_connections')
+
+                                                @foreach($record as $role)
+
+                                                    <td>{{$role['role_id']}}</td>
+
+                                                @endforeach
+
+                                            @elseif($key == 'user_id')
+
+                                                @foreach($users as $user)
+
+                                                    @if($user['id'] == $record)
+
+                                                        <td>{{$user['full_name']}}</td>
+
+                                                    @endif
+
+                                                @endforeach
 
 
 
-                                            @else
 
-                                            <td>{{$record}}</td>
 
-                                        @endif
+                                                @else
+
+                                                <td>{{$record}}</td>
+
+                                            @endif
+
+
+
+                                        @endforeach
+
+                                            @if($tableName != 'users')
+
+                                                <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
+                                                <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
+                                                <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" ><i class="fa fa-trash-o"></i> Delete</a></td>
+
+
+
+                                            @endif
+
+
+
+
+                                    </tr>
 
 
 
                                     @endforeach
 
-                                        @if($tableName != 'users')
 
-                                            <td><a class="btn btn-info btn-sm" href={{route('admin.' . $tableName . '.show', $item['id'])}}><i class="fa fa-eye"></i> View</a></td>
-                                            <td><a class="btn bg-purple btn-sm" href="{{route('admin.' . $tableName . '.edit', $item['id'])}}"><i class="fa fa-pencil"></i> Edit</a></td>
-                                            <td><a id="del" onclick="deleteItem('{{route('admin.' . $tableName . '.delete', $item['id'])}}')" class="btn btn-danger btn-sm" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
-                                        @endif
+                                @elseif($tableName == 'orders')
+
+                                    @foreach($orders as $order)
+                                        <tr>
+                                            <td>{{$order['status']}}</td>
+                                        @foreach($users as $user)
+
+                                            @if($order['user_id'] == $user['id'])
+
+                                                    <td>{{$user['full_name']}}</td>
+
+                                            @endif
+
+                                        @endforeach
 
 
 
 
-                                </tr>
+                                            <td><a href="{{route('admin.orders.show', $order['id'])}}">View</a></td>
+                                            <td><a href="">Cancel</a></td>
+                                        </tr>
+
+                                    @endforeach
 
 
-
-                                @endforeach
+                                @endif
 
 
 
 
                             </table>
+
+
+
                         </div>
                         <!-- /.box-body -->
                     </div>

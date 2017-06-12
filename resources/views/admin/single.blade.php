@@ -14,19 +14,76 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Key</th>
-                                    <th>Value</th>
+                                    @if($tableName == 'orders')
+
+                                        <th>Experience</th>
+                                        <th>Time</th>
+
+                                    @else
+
+                                        <th>Key</th>
+                                        <th>Value</th>
+
+                                    @endif
+
+
                                 </tr>
                             </thead>
 
                             <tbody>
 
-                            @foreach($record as $key => $value)
-                                <tr>
-                                    <td>{{$key}}</td>
-                                    <td>{{$value}}</td>
-                                </tr>
-                            @endforeach
+                            @if($tableName == 'orders')
+
+                                @foreach($record['reservations'] as $reservation)
+
+                                    <tr>
+
+                                        @foreach($experiences as $experience)
+
+                                            @if($experience['id'] == $reservation['page_id'])
+
+                                                @foreach($resources as $resource)
+
+                                                    @if($resource['id'] == $experience['image_id'])
+
+                                                        <td><img id="experienceImg" src="{{asset($resource['path'])}}" alt="">{{$experience['translations']['title']}}</td>
+
+                                                    @endif
+
+                                                @endforeach
+
+
+
+                                            @endif
+
+                                        @endforeach
+
+
+
+
+
+                                        <td>
+                                            @foreach($reservation['time'] as $time)
+                                                {{$time}}<br>
+                                            @endforeach
+                                        </td>
+
+                                    </tr>
+
+                                @endforeach
+
+
+                            @else
+                                @foreach($record as $key => $value)
+                                    <tr>
+                                        <td>{{$key}}</td>
+                                        <td>{{$value}}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+
+
+
 
                             </tbody>
 

@@ -21,5 +21,7 @@
 
         @include('admin.includes.js')
 
+        @yield('script')
+
     </body>
 </html>

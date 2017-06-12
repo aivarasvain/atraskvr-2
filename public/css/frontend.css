@@ -288,7 +288,7 @@ body {
     margin: 0 auto;
 }
 
-.white-shape-vieta {
+.white-shape-kambariai {
     width: 100%;
     height: 200px;
     position: relative;
@@ -401,26 +401,6 @@ body {
 
 }
 
-/*.pagination-lg>li>a, .pagination-lg>li>span {*/
-
-    /*color: #808080;*/
-
-/*}*/
-
-/*.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {*/
-
-    /*color: #252525;*/
-    /*background-color: #808080;*/
-    /*border: 1px solid #808080;*/
-
-/*}*/
-
-/*.pagination-lg>li>a:hover, .pagination-lg>li>span:hover {*/
-
-    /*color: #fff;*/
-    /*background-color: black;*/
-
-/*}*/
 
 .pagination-lg>li:last-child>a, .pagination-lg>li:last-child>span, .pagination-lg>li:first-child>a, .pagination-lg>li:first-child>span {
     border-radius: 0;
@@ -436,6 +416,284 @@ body {
 /***************End of reservation system styles*****************/
 
 
+
+#tickets {
+
+    height: 1200px;
+    background-color: black;
+
+
+}
+
+#ticketsContent {
+
+    opacity: 0.7;
+    height: 100%;
+    background: url(../images/bilietaibg.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-transition: height 1s;
+    position: relative;
+
+
+
+}
+
+.white-shape-tickets {
+
+    width: 100%;
+    height: 200px;
+    position: relative;
+    left: 0;
+    bottom: -132px;
+    background: url("../images/irregular_shape.png") no-repeat center center;
+    z-index: 499;
+
+
+
+}
+
+
+/*#tickets h1 {*/
+    /*color: #fff;*/
+    /*z-index: 600;*/
+    /*position: relative;*/
+    /*left: 0;*/
+    /*bottom: -190px;*/
+/*}*/
+
+/*#ticketsSquare {*/
+
+    /*width: 30%;*/
+    /*height: 150px;*/
+    /*border-top: 2px solid #fff;*/
+    /*border-bottom: 2px solid #fff;*/
+    /*position: relative;*/
+    /*left: 0;*/
+    /*bottom: -330px;*/
+    /*margin: 0 auto;*/
+    /*color: #fff;*/
+    /*text-align: center;*/
+
+/*}*/
+
+/*#ticketsSquare h5 {*/
+    /*font-size: 20px;*/
+/*}*/
+
+/*#ticketsSquare p {*/
+    /*font-size: 30px;*/
+/*}*/
+
+#ticketsText {
+    color: #fff;
+    position: relative;
+    left: 0;
+    bottom: 1010px;
+}
+
+#ticketsSquare {
+
+    margin: 0 auto;
+    width: 30%;
+    height: 150px;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    position: relative;
+    left: 0;
+    bottom: -136px;
+    text-align: center;
+    padding: 25px;
+}
+
+#ticketsSquare h5 {
+    font-size: 20px;
+}
+
+#ticketsSquare p {
+    font-size: 30px;
+}
+
+#ticketsButton {
+    padding-top: 5px;
+    height: 80px;
+    width: 250px;
+    border: 2px solid #fff;
+    position: relative;
+    left: 0;
+    bottom: 700px;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+
+}
+
+
+
+#ticketsButton:hover {
+
+    border: 2px solid #FD7B52;
+    color: #FD7B52;
+    text-decoration: none;
+
+}
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.white-shape-sponsors {
+
+    width: 100%;
+    height: 200px;
+    position: relative;
+    left: 0;
+    bottom: 383px;
+    background: url("../images/irregular_shape.png") no-repeat center center;
+    z-index: 499;
+
+
+
+}
+
+#sponsors {
+    margin-top: 100px;
+    height: 500px;
+
+}
+
+#sponsorsContent {
+    text-align: center;
+    margin: 75px auto 0;
+
+}
+
+#elektroMarktSponsors {
+    height: 100px;
+    width: 516px;
+    background: url(../images/sponsors/elektromarkt.png) no-repeat center center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    -webkit-transition: height 1s;
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#delfi {
+
+    height: 92px;
+    width: 189px;
+    background: url(../images/sponsors/delfi.png) no-repeat center center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    -webkit-transition: height 1s;
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+
+}
+
+
+#akropolis, #litexpo, #telesoftas {
+
+
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    -webkit-transition: height 1s;
+    position: relative;
+    margin: 15px auto 0;
+    display: inline-block;
+
+}
+
+#akropolis {
+    height: 103px;
+    width: 212px;
+    background: url(../images/sponsors/akropolis.jpg) no-repeat center center;
+}
+
+#litexpo {
+    height: 103px;
+    width: 212px;
+    background: url(../images/sponsors/litexpo.png) no-repeat center center;
+}
+
+#telesoftas {
+    height: 103px;
+    width: 212px;
+    background: url(../images/sponsors/telesoftas.png) no-repeat center center;
+}
+
+#inida {
+    height: 79px;
+    width: 163px;
+    background: url(../images/sponsors/inida.png) no-repeat center center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    -webkit-transition: height 1s;
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+
+ }
+
+#sponsorsContent h5 {
+    font-size: 18px;
+    color: #252525;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 22px;
+    opacity: 0.8;
+    margin-top: 50px;
+
+}
+
+#footer {
+
+    height: 350px;
+    background-color: #ebebeb;
+    margin-top: 450px;
+    width: 100%;
+
+}
+
+.white-shape-footer {
+
+    width: 100%;
+    height: 200px;
+    position: relative;
+    left: 0;
+    bottom: 107px;
+    background: url("../images/irregular_shape.png") no-repeat center center;
+    z-index: 499;
+
+}
+
+#footerText {
+
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0.9;
+    color: #515151;
+
+}
 
 
 
