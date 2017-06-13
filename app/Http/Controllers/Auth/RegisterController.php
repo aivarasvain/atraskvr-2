@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Laravel\Socialite\Facades\Socialite;
 use Ramsey\Uuid\Uuid;
 
 class RegisterController extends Controller
@@ -77,5 +78,58 @@ class RegisterController extends Controller
         $record -> connection()-> sync(['user']);
 
         return $record;
+    }
+
+    /**
+     * Redirect the user to the facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+
+    }
+    /**
+     * Obtain the user information from facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $user->getName();
+
+
+        $userInDb = VRUsers::where('social_id', $user->getId())->first();
+
+
+        if(!$userInDb) {
+
+            $record = VRUsers::create([
+
+                'full_name' => $user->getName(),
+                'email'     => $user->getEmail(),
+                'social_id' => $user->getId()
+
+            ]);
+
+            $record -> connection()-> sync(['user']);
+
+        } else {
+
+            auth()->login($userInDb);
+
+        }
+
+
+
+
+
+
+
+
+        return redirect()->route('frontend.index', app()->getLocale());
     }
 }

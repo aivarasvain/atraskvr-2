@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class FrontEndController extends Controller
 {
 
+
     public static function navConfiguration()
     {
         $configuration = [];

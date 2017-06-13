@@ -455,38 +455,6 @@ body {
 
 }
 
-
-/*#tickets h1 {*/
-    /*color: #fff;*/
-    /*z-index: 600;*/
-    /*position: relative;*/
-    /*left: 0;*/
-    /*bottom: -190px;*/
-/*}*/
-
-/*#ticketsSquare {*/
-
-    /*width: 30%;*/
-    /*height: 150px;*/
-    /*border-top: 2px solid #fff;*/
-    /*border-bottom: 2px solid #fff;*/
-    /*position: relative;*/
-    /*left: 0;*/
-    /*bottom: -330px;*/
-    /*margin: 0 auto;*/
-    /*color: #fff;*/
-    /*text-align: center;*/
-
-/*}*/
-
-/*#ticketsSquare h5 {*/
-    /*font-size: 20px;*/
-/*}*/
-
-/*#ticketsSquare p {*/
-    /*font-size: 30px;*/
-/*}*/
-
 #ticketsText {
     color: #fff;
     position: relative;

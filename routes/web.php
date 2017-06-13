@@ -18,19 +18,6 @@
 
 
 
-
-
-
-
-
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
 Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function() {
 
     Route::get('/', [
@@ -103,6 +90,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'check-if-admin'], function()
     
 
 });
+
+Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider')->name('social-login');
+Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
+
 
 
 

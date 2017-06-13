@@ -35,4 +35,16 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1392711654098872',
+        'client_secret' => '6a41b502976b80aa1e694787f73ec366',
+        'redirect' => 'http://atraskvr.dev/auth/facebook/callback',
+    ],
+
+    'google' => [
+        'client_id' => '495915112267-e16814q7uf268tees1s81266l71gv1d2.apps.googleusercontent.com',
+        'client_secret' => '_Gf9wESzMlcV2ANxSeiVnP-f',
+        'redirect' => 'http://atraskvr.dev/auth/google/callback',
+    ],
+
 ];
