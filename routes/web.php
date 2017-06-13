@@ -101,6 +101,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'check-if-user'], function() {
 
     Route::get('/', ['uses'  => 'UserCPController@index', 'as'    => 'user.orders.index']);
     Route::get('/{id}', ['uses'  => 'UserCPController@show', 'as'    => 'user.orders.show']);
+    Route::get('/{id}/cancel', ['uses' => 'UserCPController@update', 'as' => 'user.orders.update']);
 
 });
 

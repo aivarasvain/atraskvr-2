@@ -27,7 +27,12 @@
                         <td>{{$order['id']}}</td>
                         <td>{{$order['status']}}</td>
                         <td><a href="{{route('user.orders.show', $order['id'])}}">View</a></td>
-                        <td><a href="">Cancel</a></td>
+
+                        @if($order['status'] == 'reserved')
+                            <td><a href="{{route('user.orders.update', $order['id'])}}">Cancel</a></td>
+                        @endif
+
+
                     </tr>
 
                 @endforeach

@@ -4,6 +4,7 @@
     @include('front-end.includes.meta')
     <title>@yield('title')</title>
     @include('front-end.includes.css')
+    @yield('scriptInHead')
 </head>
 
 <body>

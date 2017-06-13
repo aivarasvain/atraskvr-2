@@ -21,7 +21,7 @@
 
                                 @foreach($experiences as $experience)
 
-                                    <li><a href="{{route('frontend.show', [app()->getLocale(), $experience['id']])}}">{{$experience['translations']['title']}}</a></li>
+                                    <li><a class="scroll" data-speed="2000" href="{{route('frontend.show', [app()->getLocale(), $experience['id']])}}">{{$experience['translations']['title']}}</a></li>
 
 
                                 @endforeach
@@ -97,3 +97,5 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+

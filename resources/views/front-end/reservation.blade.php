@@ -79,17 +79,45 @@
                                     @foreach($times as $time)
                                     <option class="select-time" value="{{$day . ' ' . $time}}"
 
-                                    @foreach($reservations as $reservation)
 
-                                        @foreach($reservation['time'] as $reservedTime)
 
-                                            @if($reservation['page_id'] == $experience['id'] && $reservedTime == $day . ' ' . $time)
-                                                {{'disabled'}}
-                                            @endif
+                                        @foreach($orders as $order)
+
+                                            @foreach($order['reservations'] as $reservation)
+
+                                                @foreach($reservation['time'] as $reservedTime)
+
+                                                    @if($reservation['page_id'] == $experience['id'] && $reservedTime == $day . ' ' . $time && $order['status'] == 'reserved')
+                                                        {{'disabled'}}
+                                                    @endif
+
+                                                @endforeach
+
+                                            @endforeach
 
                                         @endforeach
 
-                                    @endforeach
+
+
+
+
+
+
+
+
+                                        {{--@foreach($reservations as $reservation)--}}
+
+                                            {{--@foreach($reservation['time'] as $reservedTime)--}}
+
+                                            {{--@if($reservation['page_id'] == $experience['id'] && $reservedTime == $day . ' ' . $time)--}}
+                                                    {{--{{'disabled'}}--}}
+                                            {{--@endif--}}
+
+
+                                            {{--@endforeach--}}
+
+                                        {{--@endforeach--}}
+
 
 
                                     >{{$time}}</option>

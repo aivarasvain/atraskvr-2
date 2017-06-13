@@ -1,5 +1,37 @@
 @extends('front-end.core')
 
+
+@section('scriptInHead')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 1200, function(){
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+@endsection
+
 @section('content')
 
 
@@ -146,7 +178,7 @@
 
     </div>
     <div class="white-shape-tickets"></div>
-    <div id="tickets">
+    <div id="bilietai">
 
         <div id="ticketsContent">
 
@@ -177,7 +209,7 @@
     </div>
 
 
-    <div id="sponsors">
+    <div id="remejai">
 
         @foreach($remejaiCategory as $sponsors)
 
@@ -228,6 +260,8 @@
 
 
 <script>
+
+    {{--Google map--}}
     function initMap() {
         var uluru = {lat: 54.7101080, lng: 25.2619620};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -239,7 +273,9 @@
             map: map
         });
     }
+
 </script>
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn7pkMEHBUPL1uGRmn6IzlFyLO7CbatnY&callback=initMap">
 </script>

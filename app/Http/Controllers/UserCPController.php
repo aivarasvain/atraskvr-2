@@ -65,7 +65,7 @@ class UserCPController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -77,7 +77,22 @@ class UserCPController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $order = VROrders::find($id);
+
+        $order->update([
+
+            'status' => 'canceled'
+
+        ]);
+
+
+
+
+        $configuration['orders'] = VROrders::with('reservations')->where('user_id', auth()->user()->id)->get()->toArray();
+
+        return view('user.index', $configuration);
     }
 
     /**

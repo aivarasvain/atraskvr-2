@@ -74,7 +74,8 @@ class ReservationController extends Controller
             $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
             $configuration['day_from_url'] = $day;
             $configuration['resources'] = VRResources::get()->toArray();
-            $configuration['reservations'] = VRReservations::get()->toArray();
+//            $configuration['reservations'] = VRReservations::get()->toArray();
+            $configuration['orders'] = VROrders::with('reservations')->get()->toArray();
 
 
 
