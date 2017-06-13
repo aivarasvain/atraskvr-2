@@ -79,6 +79,7 @@
 
             <li><a href="{{route('admin.users.index')}}"><i class="fa fa-user"></i> <span>Users</span></a></li>
             <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-calendar-o"></i> <span>Orders</span></a></li>
+            <li><a href="{{route('user.orders.index')}}"><i class="fa fa-calendar-o"></i> <span>My orders</span></a></li>
 
             @endif
 

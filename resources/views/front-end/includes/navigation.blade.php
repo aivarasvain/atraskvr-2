@@ -21,7 +21,8 @@
 
                                 @foreach($experiences as $experience)
 
-                                    <li><a href="#">{{$experience['translations']['title']}}</a></li>
+                                    <li><a href="{{route('frontend.show', [app()->getLocale(), $experience['id']])}}">{{$experience['translations']['title']}}</a></li>
+
 
                                 @endforeach
 
