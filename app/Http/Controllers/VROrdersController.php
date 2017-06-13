@@ -24,7 +24,7 @@ class VROrdersController extends Controller
         $dataFromModel = new VROrders();
         $configuration['tableName'] = $dataFromModel->getTableName();
 
-        $configuration['orders'] = VROrders::paginate(10);
+        $configuration['orders'] = VROrders::orderBy('created_at', 'desc')->paginate(10);
 
 
 

@@ -47,7 +47,11 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
 
+                                @if($tableName == 'orders')
+
                                 {!! $orders->render() !!}
+
+                                @endif
 
                                 <tr>
 

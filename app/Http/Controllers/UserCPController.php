@@ -51,7 +51,7 @@ class UserCPController extends Controller
      */
     public function show($id)
     {
-        $configuration['record'] = VROrders::with('reservations')->find($id);
+        $configuration['record'] = VROrders::with('reservations')->find($id)->toArray();
         $configuration['pages'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
         $configuration['resources'] = VRResources::get()->toArray();
         return view('user.view', $configuration);
