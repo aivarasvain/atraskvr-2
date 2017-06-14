@@ -443,7 +443,7 @@ a:focus {
 
 #elektroMarktSponsors {
     height: 100px;
-    width: 50%;
+    width: 30%;
     background: url(../images/sponsors/elektromarkt.png) no-repeat;
     -webkit-background-size: contain;
     -moz-background-size: contain;
@@ -457,7 +457,7 @@ a:focus {
 
 #delfi {
     height: 92px;
-    width: 20%;
+    width: 10%;
     background: url(../images/sponsors/delfi.png) no-repeat center center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
