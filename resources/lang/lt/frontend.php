@@ -15,7 +15,8 @@ return [
     'inform'                => 'Informuoja',
     'organize'              => 'Organizuoja',
     'inovations'            => 'Inovacijas palaiko',
-    'more_information'     => 'Daugiau informacijos'
+    'more_information'      => 'Daugiau informacijos',
+    'index'                 => 'Pagrindinis',
 
 
 ];

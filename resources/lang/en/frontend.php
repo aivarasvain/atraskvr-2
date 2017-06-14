@@ -15,7 +15,8 @@ return [
     'inform'                => 'Information',
     'organize'              => 'Organize',
     'inovations'            => 'Inovations support',
-    'more_information'     => 'More infomation'
+    'more_information'      => 'More infomation',
+    'index'                 => 'Home',
 
 
 

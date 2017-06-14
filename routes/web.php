@@ -14,7 +14,7 @@
 
 Route::get('/', function() {
    return redirect(app()->getLocale());
-});
+})->name('index');
 
 
 

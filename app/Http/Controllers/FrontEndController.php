@@ -26,13 +26,8 @@ class FrontEndController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($language = null)
+    public function index()
     {
-
-        if($language == null)
-            $language = app()->getLocale();
-
-
 
         $configuration = self::navConfiguration();
         $configuration['aboutPage'] = VRPages::with('translations')->where('category_id', 'apie')->get()->toArray();
