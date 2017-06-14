@@ -19,6 +19,7 @@ class FrontEndController extends Controller
         $configuration['resources']  = VRResources::pluck('path', 'id');
         $configuration['experiences'] = VRPages::with('translations')->where('category_id', 'kambariai')->get()->toArray();
         $configuration['categories'] = VRCategories::with('translations')->where('parent_id', 'menu')->get()->toArray();
+        $configuration['languages'] = VRLanguages::get()->toArray();
         return $configuration;
     }
 
@@ -35,7 +36,7 @@ class FrontEndController extends Controller
         $configuration['vietaPage'] = VRPages::with('translations')->where('category_id', 'vieta')->get()->toArray();
         $configuration['bilietaiCategory'] = VRCategories::with('translations')->where('id', 'bilietai')->get()->toArray();
         $configuration['remejaiCategory'] = VRCategories::with('translations')->where('id', 'remejai')->get()->toArray();
-        $configuration['languages'] = VRLanguages::get()->toArray();
+
 
 
         return view('front-end.index', $configuration);

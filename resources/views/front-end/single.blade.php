@@ -10,7 +10,7 @@
         <div class="row">
 
 
-                <div class="col-md-6  singleExperience experience">
+                <div class="col-md-6 col-md-offset-3  singleExperience experience">
                     <div class="experience-image">
 
 
@@ -34,13 +34,7 @@
                             {{$record['translations']['description_short']}}
                         </p>
                     </div>
-
                 </div>
-
-
-
-
-
 
         </div>
 
