@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VRCategories;
+use App\Models\VRLanguages;
 use App\Models\VRPages;
 use App\Models\VRResources;
 use App\Models\VRUsers;
@@ -34,6 +35,7 @@ class FrontEndController extends Controller
         $configuration['vietaPage'] = VRPages::with('translations')->where('category_id', 'vieta')->get()->toArray();
         $configuration['bilietaiCategory'] = VRCategories::with('translations')->where('id', 'bilietai')->get()->toArray();
         $configuration['remejaiCategory'] = VRCategories::with('translations')->where('id', 'remejai')->get()->toArray();
+        $configuration['languages'] = VRLanguages::get()->toArray();
 
 
         return view('front-end.index', $configuration);

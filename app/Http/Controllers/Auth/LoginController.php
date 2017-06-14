@@ -39,6 +39,11 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/lt';
 
+//    public function authenticated()
+//    {
+//        return view('admin.list');
+//    }
+
     /**
      * Create a new controller instance.
      *

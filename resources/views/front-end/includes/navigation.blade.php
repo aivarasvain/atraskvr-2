@@ -41,16 +41,16 @@
 
                 @endforeach
 
-
-
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('frontend.language')}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/lt">Lt</a></li>
-                        <li><a href="/en">En</a></li>
+
+                        @foreach($languages as $language)
+                            <li><a href="/{{$language['language_code']}}">{{ucfirst($language['language_code'])}}</a></li>
+                        @endforeach
+
                     </ul>
                 </li>
-
 
             </ul>
 
