@@ -3,11 +3,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="{{asset('css/frontend.css')}}">
-<link rel="stylesheet" href="{{asset('css/1024.css')}}">
-<link rel="stylesheet" href="{{asset('css/640.css')}}">
 
-
-
+{!! Minify::stylesheet(array(asset('css/frontend.css'), asset('css/1024.css') , asset('css/640.css'))) !!}
 
 

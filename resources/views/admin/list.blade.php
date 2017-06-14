@@ -36,7 +36,9 @@
 
                 <div class="col-xs-12">
 
-                    <a id="addNewButton" class="btn btn-success btn-sm" href="{{route('admin.' . $tableName . '.create')}}"><i class="fa fa-plus"></i> Add new</a>
+                    @if($tableName != 'users')
+                        <a id="addNewButton" class="btn btn-success btn-sm" href="{{route('admin.' . $tableName . '.create')}}"><i class="fa fa-plus"></i> Add new</a>
+                    @endif
 
                     <div id="tableForData" class="box">
                         <div class="box-header">
@@ -106,7 +108,7 @@
 
                                     @elseif($tableName == 'orders')
                                         <th>View</th>
-                                        <th>Cancel</th>
+
 
                                     @endif
                                 </tr>
@@ -221,7 +223,7 @@
 
 
                                             <td><a href="{{route('admin.orders.show', $order['id'])}}">View</a></td>
-                                            <td><a href="">Cancel</a></td>
+
                                         </tr>
 
                                     @endforeach

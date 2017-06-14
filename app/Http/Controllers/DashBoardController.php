@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VRLanguages;
 use App\Models\VROrders;
+use App\Models\VRPages;
+use App\Models\VRReservations;
 use App\Models\VRUsers;
 use Illuminate\Http\Request;
 
@@ -17,6 +20,9 @@ class DashBoardController extends Controller
     {
         $configuration['ordersCount'] = VROrders::count();
         $configuration['usersCount'] = VRUsers::count();
+        $configuration['languagesCount'] = VRLanguages::count();
+        $configuration['pagesCount'] = VRPages::count();
+
         return view('admin.home', $configuration);
     }
 
