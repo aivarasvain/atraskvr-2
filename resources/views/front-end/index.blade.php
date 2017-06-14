@@ -245,18 +245,12 @@
 
     </div>
 
-
-
-
-
-
-
 @endsection
 
 
 
 
-
+@section('script')
 
 
 <script>
@@ -279,3 +273,4 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn7pkMEHBUPL1uGRmn6IzlFyLO7CbatnY&callback=initMap">
 </script>
+@endsection

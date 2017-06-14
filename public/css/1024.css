@@ -15,5 +15,67 @@
 
     }
 
+    #apie p {
+        font-size: 14px;
+
+    }
+
+    #apie {
+        width: 70%;
+        text-align: center;
+    }
+
+    #apie video {
+        width: 100%;
+    }
+
+    #map {
+        width: 100%;
+    }
+
+    #ticketsSquare {
+        width: 80%;
+    }
+
+    #ticketsSquare h5 {
+        font-size: 15px;
+    }
+
+    #ticketsSquare p {
+        font-size: 25px;
+    }
+
+    #akropolis {
+        height: 103px;
+        width: 80%;
+
+    }
+
+    #litexpo {
+        height: 103px;
+        width: 80%;
+
+    }
+
+    #telesoftas {
+        height: 103px;
+        width: 80%;
+    }
+
+    #inida {
+        height: 79px;
+        width: 80%
+    }
+
+    #delfi {
+        height: 92px;
+        width: 20%;
+    }
+
+    #elektroMarktSponsors {
+        height: 100px;
+        width: 80%;
+    }
+
 
 }

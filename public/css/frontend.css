@@ -3,28 +3,21 @@ body {
 }
 
 .navbar {
-
     border: none;
     background: #000000;
     border-radius: 0;
-
 }
 
 .navbar .navbar-collapse ul li a {
-
     color: #F0F0F0;
     font-size: 14px;
-
 }
 
 .navbar .navbar-collapse ul li a:hover {
-
     color: #FD7B52;
-
 }
 
 .navbar .navbar-collapse ul li a:focus {
-
     color: #FD7B52;
 }
 
@@ -32,16 +25,12 @@ body {
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
-
     color: #FD7B52;
     background-color: #000000;
-
 }
 
 .dropdown-menu>li>a:hover {
-
     background-color: #000000;
-
 }
 
 .dropdown-menu {
@@ -50,7 +39,6 @@ body {
 
 
 .navbar .navbar-nav  {
-
     display: inline-block;
     float: none;
 }
@@ -73,9 +61,7 @@ body {
 }
 
 .navbar-default .navbar-toggle:focus {
-
     background-color: #000000;
-
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -87,7 +73,6 @@ body {
     position: fixed;
     width: 100%;
     z-index: 500;
-
 }
 
 #part-1 {
@@ -99,8 +84,6 @@ body {
     background-size: cover;
     -webkit-transition: height 1s;
     position: relative;
-
-
 }
 
 #elektroMarkt {
@@ -109,12 +92,9 @@ body {
     background: url(../images/elektro_markt.png) no-repeat;
     margin: 0 auto ;
     background-position-y: -100px;
-
-
 }
 
 #elektroMarktLogo {
-
     height: 150px;
     width: 252px;
     background: url("../images/elektro_markt_logo.png") no-repeat center center;
@@ -124,7 +104,6 @@ body {
     -o-background-size: contain;
     background-size: contain;
     background-position-y: +100px;
-
 }
 
 .logo-title {
@@ -133,11 +112,9 @@ body {
     color: #FF958B;
     position: relative;
     top: 95px;
-
 }
 
 #mainTitle {
-
     font-family: 'Nunito Sans', sans-serif;
     font-size: 7.5vw;
     text-align: center;
@@ -148,7 +125,6 @@ body {
 }
 
 #mainTitleDescription {
-
     width: 369px;
     background-color: #FD7B52;
     color: white;
@@ -157,36 +133,25 @@ body {
     padding: 10px 35px;
     text-align: center;
     letter-spacing: 1px;
-
 }
 
-
-
 .white-shape {
-
     width: 100%;
     height: 200px;
     position: absolute;
     left: 0;
     bottom: -120px;
     background: url("../images/irregular_shape.png") no-repeat center center;
-
-
 }
 
 /************************************************************************************/
 
-
 .section-title {
-
     font-size: 38px;
     letter-spacing: 3px;
     text-transform: uppercase;
     text-align: center;
-
-
 }
-
 
 #apie {
     width: 794px;
@@ -194,7 +159,6 @@ body {
 }
 
 #apie p {
-
     font-size: 18px;
     color: #252525;
     font-family: 'Roboto', sans-serif;
@@ -202,10 +166,7 @@ body {
     line-height: 22px;
     opacity: 0.8;
     margin-top: 25px;
-
-
 }
-
 
 #video {
     width: 100%;
@@ -213,23 +174,19 @@ body {
 }
 
 .white-shape-about {
-
     width: 100%;
     height: 200px;
     position: relative;
     left: 0;
     bottom: 107px;
     background: url("../images/irregular_shape.png") no-repeat center center;
-
 }
-
 
 #kambariai {
 
     background-color: #FD7B52;
     width: 100%;
     margin-top:100px;
-    /*padding-bottom: 150px;*/
 }
 
 #kambariai h1 {
@@ -245,32 +202,21 @@ body {
 }
 
 .experience {
-
     text-align: center;
     height: 600px;
-
-
-
 }
 
 .experience p {
-
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 17px;
-
 }
 
-
-
 .experience-text {
-
     padding: 0 65px;
-
 }
 
 .experience-image {
-
     height: 356px;
     width: 356px;
     margin: 0 auto;
@@ -325,45 +271,33 @@ body {
     position:fixed;
     padding:0;
     margin:0;
-
     top:0;
     left:0;
-
     width: 100%;
     height: 100%;
-
     background-color: #FD7B52;
-
 }
 
 .singleExperience {
     margin-top: 200px;
 }
 
-
-
 /**********Reservation system styles**************/
 
 #reservationExperiences {
-
     margin-top: 50px;
-
 }
 
 .reservation-experience {
-
     height: 200px;
     display: block;
-
 }
 
 .reservation-image {
-
     width: 70px;
     height: 70px;
     border-radius: 50%;
     margin-right: 10px;
-
 }
 
 .time-select {
@@ -372,17 +306,12 @@ body {
 }
 
 .select2-container--default .select2-selection--multiple {
-
     border: none;
     width: 150px;
-
-
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: none;
 }
-
-
 
 .select2-results__options {
     width: 250px;
@@ -390,25 +319,18 @@ body {
 }
 
 .select2-results__option {
-
     display: inline-block;
 }
 
 .select2-container--default .select2-results>.select2-results__options {
-
-
     overflow-y: auto;
-
 }
-
 
 .pagination-lg>li:last-child>a, .pagination-lg>li:last-child>span, .pagination-lg>li:first-child>a, .pagination-lg>li:first-child>span {
     border-radius: 0;
 }
 #reservationButton {
-
     border-radius: 5px;
-
     margin-bottom: 150px;
 }
 
@@ -418,15 +340,11 @@ body {
 
 
 #bilietai {
-
     height: 1200px;
     background-color: black;
-
-
 }
 
 #ticketsContent {
-
     opacity: 0.7;
     height: 100%;
     background: url(../images/bilietaibg.jpg) no-repeat center center;
@@ -436,13 +354,9 @@ body {
     background-size: cover;
     -webkit-transition: height 1s;
     position: relative;
-
-
-
 }
 
 .white-shape-tickets {
-
     width: 100%;
     height: 200px;
     position: relative;
@@ -450,9 +364,6 @@ body {
     bottom: -132px;
     background: url("../images/irregular_shape.png") no-repeat center center;
     z-index: 499;
-
-
-
 }
 
 #ticketsText {
@@ -463,7 +374,6 @@ body {
 }
 
 #ticketsSquare {
-
     margin: 0 auto;
     width: 30%;
     height: 150px;
@@ -496,17 +406,12 @@ body {
     text-align: center;
     text-transform: uppercase;
     color: #fff;
-
 }
 
-
-
 #ticketsButton:hover {
-
     border: 2px solid #FD7B52;
     color: #FD7B52;
     text-decoration: none;
-
 }
 a:hover {
     text-decoration: none;
@@ -517,7 +422,6 @@ a:focus {
 }
 
 .white-shape-sponsors {
-
     width: 100%;
     height: 200px;
     position: relative;
@@ -525,27 +429,22 @@ a:focus {
     bottom: 383px;
     background: url("../images/irregular_shape.png") no-repeat center center;
     z-index: 499;
-
-
-
 }
 
 #remejai {
     margin-top: 100px;
     height: 500px;
-
 }
 
 #sponsorsContent {
     text-align: center;
     margin: 75px auto 0;
-
 }
 
 #elektroMarktSponsors {
     height: 100px;
-    width: 516px;
-    background: url(../images/sponsors/elektromarkt.png) no-repeat center center;
+    width: 50%;
+    background: url(../images/sponsors/elektromarkt.png) no-repeat;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -557,9 +456,8 @@ a:focus {
 }
 
 #delfi {
-
     height: 92px;
-    width: 189px;
+    width: 20%;
     background: url(../images/sponsors/delfi.png) no-repeat center center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
@@ -569,13 +467,9 @@ a:focus {
     position: relative;
     margin: 0 auto;
     display: inline-block;
-
 }
 
-
 #akropolis, #litexpo, #telesoftas {
-
-
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -584,7 +478,6 @@ a:focus {
     position: relative;
     margin: 15px auto 0;
     display: inline-block;
-
 }
 
 #akropolis {
@@ -617,7 +510,6 @@ a:focus {
     position: relative;
     margin: 0 auto;
     display: inline-block;
-
  }
 
 #sponsorsContent h5 {
@@ -628,20 +520,16 @@ a:focus {
     line-height: 22px;
     opacity: 0.8;
     margin-top: 50px;
-
 }
 
 #footer {
-
     height: 350px;
     background-color: #ebebeb;
-    margin-top: 450px;
+    margin-top: 650px;
     width: 100%;
-
 }
 
 .white-shape-footer {
-
     width: 100%;
     height: 200px;
     position: relative;
@@ -649,18 +537,15 @@ a:focus {
     bottom: 107px;
     background: url("../images/irregular_shape.png") no-repeat center center;
     z-index: 499;
-
 }
 
 #footerText {
-
     width: 20%;
     margin: 0 auto;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     opacity: 0.9;
     color: #515151;
-
 }
 
 

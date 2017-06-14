@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/lt';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -99,15 +99,12 @@ class RegisterController extends Controller
     {
         $user = Socialite::driver($provider)->user();
 
-        $user->getName();
-
-
         $userInDb = VRUsers::where('social_id', $user->getId())->first();
 
 
         if(!$userInDb) {
 
-            $record = VRUsers::create([
+            $newUser = VRUsers::create([
 
                 'full_name' => $user->getName(),
                 'email'     => $user->getEmail(),
@@ -115,20 +112,14 @@ class RegisterController extends Controller
 
             ]);
 
-            $record -> connection()-> sync(['user']);
+            $newUser -> connection()-> sync(['user']);
+            auth()->login($newUser);
 
         } else {
 
             auth()->login($userInDb);
 
         }
-
-
-
-
-
-
-
 
         return redirect()->route('frontend.index', app()->getLocale());
     }

@@ -28,4 +28,24 @@
     }
 
 
+    #apie p {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    #vietaText {
+        width: 400px;
+        margin: 0 auto 50px;
+        text-align: center;
+    }
+
+    #vieta p {
+        font-size: 15px;
+        line-height: 18px;
+
+
+    }
+
+
+
 }

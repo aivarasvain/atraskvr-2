@@ -12,7 +12,9 @@
 */
 
 
-
+Route::get('/', function() {
+   return redirect(app()->getLocale());
+});
 
 
 
