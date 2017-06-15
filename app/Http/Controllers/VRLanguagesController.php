@@ -137,7 +137,6 @@ class VRLanguagesController extends Controller
     public function adminDestroy($id)
     {
 
-
         if (VRLanguages::destroy($id))
         {
             return json_encode(["success" => true, "id" => $id]);

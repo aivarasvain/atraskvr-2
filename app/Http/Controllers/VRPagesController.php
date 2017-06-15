@@ -162,7 +162,6 @@ class VRPagesController extends Controller
         $configuration['pages'] = VRPages::get()->toArray();
         $configuration['categories'] = VRCategories::get()->toArray();
         $configuration['record'] = VRPagesTranslations::where('id', $id)->with('parentpage')->first()->toArray();
-//        $configuration['record'] = VRPagesTranslations::find($id);
         $configuration['tableName'] = $dataFromModel->getTableName();
         $configuration['languages'] = VRLanguages::get()->toArray();
 

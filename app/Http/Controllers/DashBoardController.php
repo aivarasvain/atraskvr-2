@@ -23,7 +23,6 @@ class DashBoardController extends Controller
         $configuration['languagesCount'] = VRLanguages::count();
         $configuration['pagesCount'] = VRPages::count();
 
-
         return view('admin.home', $configuration);
     }
 

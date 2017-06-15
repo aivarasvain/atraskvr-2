@@ -6,7 +6,7 @@
     <div class="container">
 
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section style="padding-bottom: 35px;" class="content-header">
             <h1>
                 {{auth()->user()->full_name}}
                 <small>orders</small>
