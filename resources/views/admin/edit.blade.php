@@ -1,5 +1,5 @@
 @extends('admin.core')
-
+@section('title') Atrask VR @endsection
 @section('content')
 
 

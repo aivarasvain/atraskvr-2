@@ -3,8 +3,6 @@
 @section('content')
 
 
-
-
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -25,11 +23,7 @@
 
         </section>
 
-
-
     <section class="content">
-
-
 
             <div class="row">
 
@@ -109,8 +103,6 @@
                                     @endif
                                 </tr>
 
-
-
                                 @if($tableName != 'orders')
 
                                     @foreach($list as $item)
@@ -166,17 +158,11 @@
 
                                                 @endforeach
 
-
-
-
-
                                                 @else
 
                                                 <td>{{$record}}</td>
 
                                             @endif
-
-
 
                                         @endforeach
 
@@ -190,12 +176,7 @@
 
                                             @endif
 
-
-
-
                                     </tr>
-
-
 
                                     @endforeach
 
