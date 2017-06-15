@@ -9,8 +9,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                {{ucfirst($tableName) . ' edit'}}
             </h1>
 
 
@@ -75,7 +74,7 @@
 
                                     <option value="{{$category['id']}}"
 
-                                        @if($category['id'] == $record['parentpage']['category_id'])
+                                        @if($tableName == 'pages' && $category['id'] == $record['parentpage']['category_id'])
                                             {{'selected'}}
                                         @endif
 

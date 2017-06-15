@@ -4,12 +4,12 @@
 
 
 
-    <div class="container">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                {{ucfirst($tableName) . ' list'}}
+
             </h1>
 
 
@@ -26,7 +26,6 @@
         </section>
 
 
-    </div>
 
     <section class="content">
 
@@ -41,10 +40,7 @@
                     @endif
 
                     <div id="tableForData" class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">{{$tableName . ' ' . 'list'}}</h3>
 
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">

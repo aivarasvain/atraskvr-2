@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\VRCategories;
 use App\Models\VRCategoriesTranslations;
 use App\Models\VRLanguages;
+use App\Models\VRPages;
+use App\Models\VRPagesTranslations;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -70,11 +72,10 @@ class VRCategoriesController extends Controller
 
             'language_id' => 'required',
             'name' => 'required|alpha',
-            'slug' => 'required|alpha',
 
         ]);
 
-        $title = $data['title'];
+        $title = $data['name'];
 
         $data['slug'] = str_slug($title, '-');
 
@@ -217,8 +218,15 @@ class VRCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function adminDestroy($id)
     {
-        //
+
+        if (VRCategoriesTranslations::destroy($id))
+        {
+            return json_encode(["success" => true, "id" => $id]);
+        }
+
+
     }
+
 }

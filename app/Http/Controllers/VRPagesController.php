@@ -256,8 +256,11 @@ class VRPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function adminDestroy($id)
     {
-        //
+        if (VRPagesTranslations::destroy($id))
+        {
+            return json_encode(["success" => true, "id" => $id]);
+        }
     }
 }
